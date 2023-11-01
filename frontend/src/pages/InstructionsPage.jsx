@@ -151,37 +151,33 @@ const InstructionsPage = () => {
             <p className="text-white text-2xl text-center font-semibold">Instructions</p>
           </div>
 
-          <div className="">
+          <div className=" ">
             {formData.instructions.map((instruction, index) => (
-              <div key={index} className="flex full pt-3 px-10 items-center">
-                <div className="items center w-full lg-w-3/4">
-                  <label className="text-white font-medium text-md flex">
-                    Step {index + 1} : <p className="text-white px-4">{instruction.step}</p>
-                    <button onClick={() => removeInstruction(index)} className="">
-                      <IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover-bg-[#361316] text-3xl" />
-                    </button>
-                  </label>
-                  
-                </div>
-                <div className="flex items-center justify-center">
-                  
-                  
-                    
-                 
+              <div key={index} className="w-full pt-3 px-2 md:px-4 lg:px-8 ">
+              <div className="items-center w-full lg:w-3/4">
+                <div className="text-white font-medium text-md flex w-full ">
+                  <span className="text-white px-4 max-w-full flex gap-2">
+                    <p>Step</p> <p>{index + 1} </p>  <p> -</p>
+                  </span>
+                  <p className="flex max-w-full break-all">{instruction.step}</p>
+                  <button onClick={() => removeInstruction(index)} className=" mx-2">
+                    <IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover-bg-[#361316] text-3xl" />
+                  </button>
                 </div>
               </div>
+            </div>
             ))}
-            <div className="flex full pt-3 px-10 ">
+            <div className="flex full pt-3 px-8 ">
               <div className="items center w-full lg-w-3/4">
                 <label className="text-white font-medium text-md">New Step</label>
                 <div className="flex flex-row pt-2 justify-center items-center">
-                <input
-                  type="text"
+                <textarea
+                  type="textarea"
                   name="new_instruction"
                   value={newInstruction}
                   onChange={(e) => setNewInstruction(e.target.value)}
                   placeholder={`Enter a new step`}
-                  className="border border-zinc-700 w-full px-2 py-1  text-white text-lg bg-black rounded-md placeholder:italic placeholder-text-sm outline-none focus-border-orange-400"
+                  className="border border-zinc-700 w-full px-4 py-1  text-white text-lg bg-black rounded-md placeholder:italic placeholder-text-sm outline-none focus-border-orange-400"
                 />
                 <button onClick={addInstruction} className="px-4 ">
                       <IoIosAdd className="text-green-500 text-3xl rounded-full border border-green-600 hover-bg-[#133615]" />
@@ -209,7 +205,7 @@ const InstructionsPage = () => {
                 <span className="text-white">Back</span>
               </button>
               {open ? (
-          <div className="absolute top-0 bg-gradient-to-b from-zinc-900 to-black w-full  h-full rounded-xl bg-gradient text-2xl text-white p-4">
+          <div className="absolute top-0 bg-gradient-to-b from-[#00000011] backdrop-filter shadow-xl backdrop-blur-xl to-black w-full  h-full rounded-xl bg-gradient text-2xl text-white p-4">
             <div className="flex justify-end">
               <AiOutlineClose
                 onClick={btnHandler}

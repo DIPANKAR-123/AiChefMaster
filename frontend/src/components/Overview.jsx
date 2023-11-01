@@ -30,7 +30,8 @@ const Overview = ({form}) => {
         <p className=" font-semibold text-xl">Instructions - </p>
         <ul className='flex flex-col gap-1 py-4'>
           {form.instructions.map((instruction, index) => (
-            <li className='text-lg' key={index}>{index+1} . {instruction.step}</li>
+            <li className='text-lg break-all flex gap-1' key={index}> <p>{index+1}</p> <p>. </p><p className='
+            px-2'> {instruction.step}</p></li>
           ))}
         </ul>
       </div>
