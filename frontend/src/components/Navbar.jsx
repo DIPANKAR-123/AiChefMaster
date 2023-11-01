@@ -1,0 +1,74 @@
+/* eslint-disable no-unused-vars */
+import React from 'react'
+import { Link, NavLink } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
+import MobileNav from './MobileNav';
+import { useAuthContext } from '../hooks/useAuthContext';
+import {  toast } from 'react-toastify';
+const Navbar = () => {
+
+  const {logout} = useLogout()
+  const {user} = useAuthContext()
+  const handleLogout=()=>{
+    logout()
+  }
+
+  const handleDashboardClick=()=>{
+    if(!user){
+      toast.error('You need an account to access dashboard',{
+        theme:"dark",
+        position:"bottom-right"
+      })
+    }
+  }
+
+  return (
+    <header className='bg-black border-b text-white border-zinc-600  z-20 py-4 fixed top-0 left-0 px-4 md:px-8 w-screen  flex items-center justify-between md:justify-around'>
+      <h1 >
+        <a href='/'><img src="./assets/LOGO-text.png" alt="logo" /></a>
+      </h1>
+
+      <ul className='hidden md:flex md:items-center h-full '>
+            <li key='home' className=' text-lg font-primary px-4 h-full  transition-all duration-300   py-2 hover:text-amber-500'>
+            <NavLink  to='/' >Home</NavLink>
+            </li>
+            <li key='dashboard' onClick={handleDashboardClick} className=' text-lg font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-amber-500'>
+            <NavLink  to='/dashboard'>Create Dish</NavLink>
+            </li>
+            <li key='contact' className=' text-lg font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-amber-500'>
+            <NavLink  to='/contact'>Contact</NavLink>
+            </li>
+      </ul>
+          
+           <div className='hidden md:flex md:items-center  h-full'>
+            {! user && <div>
+            <button className='  '>
+            <Link className='text-lg text-white font-primary px-4 h-full  transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-2 ' to='/login'>Login</Link>
+            </button>
+            <button className='px-2'>
+            <Link className='text-lg text-white font-primary px-4 h-full  transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-2 ' to='/signup'>Signup</Link>
+            </button>
+            </div>}
+
+            {user && <div className='hidden md:flex md:items-center  h-full border-r-2 mx-4'>
+             <button className='text-lg text-white font-primary px-4 h-full  py-1 '>{user.first_name}</button> 
+            </div>}
+
+            {user && <div className='hidden md:flex md:items-center  h-full'>
+             <button onClick={handleLogout} className='text-lg text-white font-primary px-4 h-full  transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-1 '>Logout</button> 
+            </div>}
+
+            
+            </div>
+
+          
+
+          {/* nav menu button - shown by default, hidden on desktop */}
+           
+          <MobileNav/>
+           
+    </header>
+  )
+}
+
+export default Navbar

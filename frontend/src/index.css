@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active{
+    color: #f59e0b;
+   
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid #474747;
+    
+    background: linear-gradient(to right,#131313, #000000) ;
+    transition-duration: 400ms ;
+    transition-timing-function: ease-in-out;
+   
+}
+
+
+
+body{
+    background: #000;
+    overflow-x: hidden;
+  background: linear-gradient(to right,#000000, #000000) ;
+  overflow-x: hidden;
+}
+
+.get-started {
+    
+    
+    border: 1px solid #0000;
+    
+    background: linear-gradient(to right,#131313, #000000) padding-box, linear-gradient(
+          var(--angle),
+          #070707,
+          #fe9f11
+        ) border-box;
+    animation: 8s rotate linear infinite;
+  }
+  
+  @keyframes rotate {
+    to {
+      --angle: 360deg;
+    }
+  }
+  
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+  
