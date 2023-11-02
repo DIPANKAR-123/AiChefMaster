@@ -13,6 +13,8 @@ import InstructionsPage from './pages/InstructionsPage'
 import { useAuthContext } from './hooks/useAuthContext'
 function App() {
   const {user} = useAuthContext()
+  
+
 
   return (
     <div>

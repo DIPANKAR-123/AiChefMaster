@@ -7,6 +7,11 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import toast, { Toaster } from "react-hot-toast";
 
 const InstructionsPage = () => {
+
+
+
+
+
   const navigate = useNavigate();
   const userToken = JSON.parse(localStorage.getItem("user"));
   const initialFormData = JSON.parse(localStorage.getItem("formData")) || {
@@ -45,7 +50,7 @@ const InstructionsPage = () => {
     setisLoading(true);
   
     try {
-      const response = await fetch("https://api.aichefmaster.com/api/dish/create/", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}api/dish/create/`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${userToken.access_token}`,

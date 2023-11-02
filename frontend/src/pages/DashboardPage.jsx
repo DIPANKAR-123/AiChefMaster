@@ -72,7 +72,7 @@ const navigateToNextPage = () => {
         <div className="h-1 w-72 flex-shrink-0 bg-gradient-to-r from-[#FF8A00] to-[#000]"></div>
       </div>
 
-      <div className=" py-8  ">
+      {/* <div className=" py-8  ">
           <div className="w-screen flex flex-col  justify-center items-center px-4 ">
             
       <input
@@ -84,16 +84,16 @@ const navigateToNextPage = () => {
 
        <button className="text-white py-2 border hover:bg-amber-800  border-amber-600 my-4 rounded-md px-2 items-end">Search</button>
        </div>
-      </div>
+      </div> */}
 
       {/* RESULTS CARDS */}
 
-      <div className="bg-zinc-900 text-white p-4 rounded-xl">
+      {/* <div className="bg-zinc-900 text-white p-4 rounded-xl">
         <p className="text-2xl">Biryani</p>
         <p>Popularity State - Hyderabad</p>
         <p>Cuisine - Indian</p>
         <p>Course Type - Main Course</p>
-      </div>
+      </div> */}
 
 
       {/* CREATE DISH  */}
