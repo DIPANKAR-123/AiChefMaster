@@ -44,7 +44,9 @@ const InstructionsPage = () => {
   const saveFormDataToLocalStorage = (formData) => {
     localStorage.setItem("formData", JSON.stringify(formData));
   };
-
+  const clearFormDataFromLocalStorage = () => {
+    localStorage.removeItem("formData");
+  };
   const submitHandler = async (e) => {
     e.preventDefault();
     setisLoading(true);
@@ -79,9 +81,7 @@ const InstructionsPage = () => {
   };
   
 
-  const clearFormDataFromLocalStorage = () => {
-    localStorage.removeItem("formData");
-  };
+  
 
   const removeIngredient = (name) => {
     const updatedIngredients = formData.ingredients.filter(
