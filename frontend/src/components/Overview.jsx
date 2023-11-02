@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-
+import { BiDish } from "react-icons/bi";
 
 const Overview = ({form}) => {
     console.log(form.dishName)
   return (
-    <div className='w-full h-full  font-primary  text-white py-10 px-16'>
-     
+    <div className='w-full h-full  font-primary  text-white py-10 px-16 '>
+      <p className='text-3xl text-center font-semibold text-amber-500 pb-4 flex items-center justify-center gap-4'>Dish Overview <BiDish/></p>
       <div className=''>
        <div className='flex items-center gap-4 border-b border-zinc-700'><p className='p-1  py-2 font-semibold text-xl'>Dish Name - </p> <span className='text-lg '>{form.name}</span></div>
        <div className='flex items-center gap-4 border-b border-zinc-700'><p className='p-1  py-2 font-semibold text-xl'>Veg or Non-veg - </p><span className='text-lg '>{form.veg_non_veg}</span></div>
@@ -20,7 +20,7 @@ const Overview = ({form}) => {
         <p className=" font-semibold text-xl">Ingredients - </p>
         <ul className='flex gap-4'>
           {form.ingredients.map((ingredient, index) => (
-            <li className='text-lg' key={index}>{ingredient.name}-{ingredient.quantity}</li>
+            <li className='text-lg' key={index}>{ingredient.name}-{ingredient.quantity} </li>
           ))}
         </ul>
       </div>

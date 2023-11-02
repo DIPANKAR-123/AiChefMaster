@@ -11,6 +11,7 @@ export default {
         'secondary' : ["Roboto", "sans-serif"]
       }
     },
+    
   },
   plugins: [],
 }

@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { IoIosAdd, IoIosClose } from "react-icons/io";
+import { IoIosAdd, IoIosClose, IoIosPaper, IoIosPie } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import Overview from "../components/Overview";
 import { AiOutlineClose } from "react-icons/ai";
+import { useAuthContext } from "../hooks/useAuthContext";
+import toast, { Toaster } from "react-hot-toast";
 
 const InstructionsPage = () => {
   const navigate = useNavigate();
-
+  const userToken = JSON.parse(localStorage.getItem("user"));
   const initialFormData = JSON.parse(localStorage.getItem("formData")) || {
     ingredients: [],
     instructions: [],
   };
   const [form, setForm] = useState(initialFormData);
- 
+  const {user} = useAuthContext()
 
   const [open, setOpen] = useState(false);
 
@@ -27,8 +29,53 @@ const InstructionsPage = () => {
   };
 
   useEffect(() => {
+    if (user && user.account_id) {
+      const updatedFormData = { ...formData, chef: user.account_id };
+      localStorage.setItem("formData", JSON.stringify(updatedFormData));
+    }
+  }, [formData]);
+
+
+  const saveFormDataToLocalStorage = (form) => {
     localStorage.setItem("formData", JSON.stringify(formData));
-  }, [formData, form]);
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    console.log(form);
+    try {
+      const response = await fetch("http://localhost:8000/api/dish/create/", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${userToken.access_token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+      const data = await response.json();
+      console.log(data);
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log("Dish created successfully:", responseData);
+        toast.success("Dish Created");
+      } else {
+        console.error("Error creating dish:", response.statusText);
+        toast.error("Something went wrong");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+      toast.error("Something went wrong");
+    }
+
+    setFormData(initialFormData);
+    clearFormDataFromLocalStorage();
+  };
+
+  const clearFormDataFromLocalStorage = () => {
+    localStorage.removeItem("formData");
+  };
 
   const removeIngredient = (name) => {
     const updatedIngredients = formData.ingredients.filter(
@@ -84,14 +131,15 @@ const InstructionsPage = () => {
 
   return (
     <div className="mt-32 w-screen h-full font-primary flex justify-center items-center">
-      <div className="bg-gradient-to-b from-zinc-500 to-black p-0.5 w-1/2 rounded-lg">
+
+      <form action="" onSubmit={submitHandler} className="bg-gradient-to-b from-zinc-500 to-black p-0.5 w-[90%] lg:w-3/4 rounded-lg">
         <div className="bg-gradient-to-b from-zinc-950 to-black items-center relative backdrop-filter backdrop-blur-xl rounded-lg">
           <div className='w-[400px] h-[400px] rounded-full absolute top-[-40px] left-[-40px] blur-3xl z-[-10] bg-[#14318629]'></div>
-          <div className="flex flex-col pt-10 px-10">
-            <label htmlFor="" className="text-white text-2xl text-center  font-semibold pb-2">
-              Ingredients
-            </label>
-            <div className="bg-gradient-to-b from-slate-900 to-transparent rounded-xl p-4 py-8 flex flex-col justify-center items-center">
+          <div className="flex flex-col p-4 w-full">
+            <p  className="text-white text-3xl text-center flex justify-center items-center gap-2 font-medium pb-2">
+              Ingredients <IoIosPie/>
+            </p>
+            <div className="bg-transparent rounded-xl p-4 py-8 flex flex-col justify-center items-center">
               <form onSubmit={handleIngredientSubmit} className="w-full">
                 <ul className="flex flex-wrap gap-4 my-2 w-full">
                   {formData.ingredients.map((ingredient, index) => (
@@ -118,7 +166,7 @@ const InstructionsPage = () => {
                       value={ingredientName}
                       onChange={(e) => setIngredientName(e.target.value)}
                       placeholder="eg. Chicken"
-                      className="px-2 my-2 py-1 text-white text-lg w-full border border-zinc-700 bg-black rounded-md placeholder:italic outline-none"
+                      className="px-2 my-2 py-1 text-white text-lg w-full border border-zinc-700 bg-black rounded-md focus:border-orange-400 placeholder:italic outline-none"
                     />
                   </div>
 
@@ -147,9 +195,9 @@ const InstructionsPage = () => {
           </div>
 
           {/* Instructions */}
-          <div className="pl-10 pt-4">
-            <p className="text-white text-2xl text-center font-semibold">Instructions</p>
-          </div>
+          
+            <p className="text-white text-3xl text-center flex items-center justify-center gap-2 font-medium">Instructions <IoIosPaper/></p>
+          
 
           <div className=" ">
             {formData.instructions.map((instruction, index) => (
@@ -161,7 +209,7 @@ const InstructionsPage = () => {
                   </span>
                   <p className="flex max-w-full break-all">{instruction.step}</p>
                   <button onClick={() => removeInstruction(index)} className=" mx-2">
-                    <IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover-bg-[#361316] text-3xl" />
+                    <IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-[#361316] text-3xl" />
                   </button>
                 </div>
               </div>
@@ -180,7 +228,7 @@ const InstructionsPage = () => {
                   className="border border-zinc-700 w-full px-4 py-1  text-white text-lg bg-black rounded-md placeholder:italic placeholder-text-sm outline-none focus-border-orange-400"
                 />
                 <button onClick={addInstruction} className="px-4 ">
-                      <IoIosAdd className="text-green-500 text-3xl rounded-full border border-green-600 hover-bg-[#133615]" />
+                      <IoIosAdd className="text-green-500 text-3xl rounded-full border border-green-600 hover:bg-[#133615]" />
                 </button>
                 </div>
               </div>
@@ -204,12 +252,22 @@ const InstructionsPage = () => {
                 <div className="absolute inset-0 w-0 bg-[#ff910032] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
                 <span className="text-white">Back</span>
               </button>
+
+              <button
+                
+                className="get-started group relative px-8 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md-text-2xl shadow-2xl shadow-[#ff910025] mr-8 my-8"
+              >
+                <div className="absolute inset-0 w-0 bg-[#ff910032] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                <span className="text-white">Submit</span>
+              </button>
+
+
               {open ? (
-          <div className="absolute top-0 bg-gradient-to-b from-[#00000011] backdrop-filter shadow-xl backdrop-blur-xl to-black w-full  h-full rounded-xl bg-gradient text-2xl text-white p-4">
+          <div className="absolute top-0 bg-gradient-to-b from-[#00000011] backdrop-filter shadow-xl backdrop-blur-xl to-black w-full  h-full rounded-xl bg-gradient  text-white p-4">
             <div className="flex justify-end">
               <AiOutlineClose
                 onClick={btnHandler}
-                className="cursor-pointer text-3xl text-red-500 hover:bg-slate-400 rounded-full"
+                className="cursor-pointer text-3xl text-rose-600 border border-rose-500 p-1  hover:bg-[#361316] rounded-full"
               />
             </div>
             <Overview form={formData} />
@@ -220,7 +278,8 @@ const InstructionsPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </form>
+      <Toaster />
     </div>
   );
 };
