@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { LuChefHat } from "react-icons/lu";
-import Overview from "../components/Overview";
-import { AiOutlineClose } from "react-icons/ai";
-
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
+
 
 
 
@@ -27,7 +24,7 @@ const DashboardPage = () => {
 
   
 
-  console.log("user Token", userToken.access_token);
+  
 
   const [form, setForm] = useState(initialFormState);
 
@@ -37,10 +34,6 @@ const DashboardPage = () => {
   };
 
  
-
-  const clearFormDataFromLocalStorage = () => {
-    localStorage.removeItem("formData");
-  };
 
   const inputHandler = (e) => {
     const { name, value } = e.target;
@@ -150,8 +143,8 @@ const navigateToNextPage = () => {
                       <input
                         type="radio"
                         name="veg_non_veg"
-                        value="vegetarian"
-                        checked={form.veg_non_veg === "vegetarian"}
+                        value="Vegetarian"
+                        checked={form.veg_non_veg === "Vegetarian"}
                         onChange={inputHandler}
                       />
                       <label className="text-white">Vegetarian</label>
@@ -162,11 +155,11 @@ const navigateToNextPage = () => {
                         className=""
                         type="radio"
                         name="veg_non_veg"
-                        value="non-vegetarian"
-                        checked={form.veg_non_veg === "non-vegetarian"}
+                        value="NonVeg"
+                        checked={form.veg_non_veg === "NonVeg"}
                         onChange={inputHandler}
                       />
-                      <label className="text-white">Non-vegetarian</label>
+                      <label className="text-white">NonVeg</label>
                     </div>
                     </div>
                   </div>
@@ -215,19 +208,14 @@ const navigateToNextPage = () => {
                       Course Type
                     </label>
 
-                    <select
-                      name="course_type"
-                      onChange={inputHandler}
-                      value={form.course_type}
-                      className="border px-2 py-1 text-white text-lg bg-[#060606] border-slate-500 rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
-                    >
-                      <option value="">Select Course Type</option>
-                      {courseTypeOptions.map((option) => (
-                        <option key={option} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
+                    <input
+                  type="text"
+                  name="course_type"
+                  onChange={inputHandler}
+                  value={form.course_type}
+                  className="border px-2 py-1 text-white text-lg bg-[#060606] border-slate-500 rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
+                  placeholder="Select Course Type"
+                />
                   </div>
 
                   <div className="flex flex-col">

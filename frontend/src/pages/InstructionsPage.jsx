@@ -20,9 +20,9 @@ const InstructionsPage = () => {
 
   const [formData, setFormData] = useState(initialFormData);
   const [ingredientName, setIngredientName] = useState("");
-  const [ingredientQuantity, setIngredientQuantity] = useState("");
+  const [ingredientQuantity, setIngredientQuantity] = useState(0);
   const [newInstruction, setNewInstruction] = useState("");
-
+  const [isLoading, setisLoading] = useState(false)
 
   const btnHandler = () => {
     setOpen((prev) => !prev);
@@ -36,42 +36,43 @@ const InstructionsPage = () => {
   }, [formData]);
 
 
-  const saveFormDataToLocalStorage = (form) => {
+  const saveFormDataToLocalStorage = (formData) => {
     localStorage.setItem("formData", JSON.stringify(formData));
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
-    console.log(form);
+    setisLoading(true);
+  
     try {
-      const response = await fetch("http://localhost:8000/api/dish/create/", {
+      const response = await fetch("https://api.aichefmaster.com/api/dish/create/", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${userToken.access_token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify(formData),
       });
-      const data = await response.json();
-      console.log(data);
-
+  
       if (response.ok) {
+        setisLoading(false)
         const responseData = await response.json();
         console.log("Dish created successfully:", responseData);
         toast.success("Dish Created");
       } else {
+        const errorData = await response.json();
         console.error("Error creating dish:", response.statusText);
-        toast.error("Something went wrong");
+        toast.error(errorData.message || "Something went wrong");
       }
     } catch (error) {
       console.error("An error occurred:", error);
       toast.error("Something went wrong");
     }
-
+    setisLoading(false)
     setFormData(initialFormData);
     clearFormDataFromLocalStorage();
   };
+  
 
   const clearFormDataFromLocalStorage = () => {
     localStorage.removeItem("formData");
@@ -132,7 +133,7 @@ const InstructionsPage = () => {
   return (
     <div className="mt-32 w-screen h-full font-primary flex justify-center items-center">
 
-      <form action="" onSubmit={submitHandler} className="bg-gradient-to-b from-zinc-500 to-black p-0.5 w-[90%] lg:w-3/4 rounded-lg">
+      <form action=""  className="bg-gradient-to-b from-zinc-500 to-black p-0.5 w-[90%] lg:w-3/4 rounded-lg">
         <div className="bg-gradient-to-b from-zinc-950 to-black items-center relative backdrop-filter backdrop-blur-xl rounded-lg">
           <div className='w-[400px] h-[400px] rounded-full absolute top-[-40px] left-[-40px] blur-3xl z-[-10] bg-[#14318629]'></div>
           <div className="flex flex-col p-4 w-full">
@@ -140,7 +141,7 @@ const InstructionsPage = () => {
               Ingredients <IoIosPie/>
             </p>
             <div className="bg-transparent rounded-xl p-4 py-8 flex flex-col justify-center items-center">
-              <form onSubmit={handleIngredientSubmit} className="w-full">
+              <form  className="w-full">
                 <ul className="flex flex-wrap gap-4 my-2 w-full">
                   {formData.ingredients.map((ingredient, index) => (
                     <li
@@ -173,7 +174,7 @@ const InstructionsPage = () => {
                   <div className="w-full lg:w-1/2 py-4">
                     <label className="text-white block">Quantity</label>
                     <input
-                      type="text"
+                      type="number"
                       name="ingredient_quantity"
                       value={ingredientQuantity}
                       onChange={(e) => setIngredientQuantity(e.target.value)}
@@ -184,6 +185,7 @@ const InstructionsPage = () => {
                 </div>
                 <div>
                   <button
+                  onClick={handleIngredientSubmit}
                     type="submit"
                     className="text-white bg-zinc-600 p-2 my-4 mx-auto rounded-md hover-bg-zinc-400"
                   >
@@ -227,7 +229,7 @@ const InstructionsPage = () => {
                   placeholder={`Enter a new step`}
                   className="border border-zinc-700 w-full px-4 py-1  text-white text-lg bg-black rounded-md placeholder:italic placeholder-text-sm outline-none focus-border-orange-400"
                 />
-                <button onClick={addInstruction} className="px-4 ">
+                <button onClick={addInstruction} type="button" className="px-4 ">
                       <IoIosAdd className="text-green-500 text-3xl rounded-full border border-green-600 hover:bg-[#133615]" />
                 </button>
                 </div>
@@ -254,12 +256,15 @@ const InstructionsPage = () => {
               </button>
 
               <button
-                
-                className="get-started group relative px-8 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md-text-2xl shadow-2xl shadow-[#ff910025] mr-8 my-8"
-              >
-                <div className="absolute inset-0 w-0 bg-[#ff910032] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-                <span className="text-white">Submit</span>
-              </button>
+  onClick={submitHandler}
+  className={`${
+    isLoading ? 'cursor-wait' : 'cursor-pointer'
+  } get-started group relative px-8 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md:text-2xl shadow-2xl shadow-[#ff910025] mr-8 my-8`}
+>
+  <div className="absolute inset-0 w-0 bg-[#ff910032] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+  <span className="text-white">Submit</span>
+</button>
+
 
 
               {open ? (
