@@ -246,6 +246,7 @@ const InstructionsPage = () => {
             <div className="flex items-center justify-center">
 
             <button
+            type="button"
                   onClick={btnHandler}
                   className="get-started group relative px-8 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md:text-2xl shadow-2xl shadow-[#ff910025] mr-8 my-8"
                 >
@@ -253,6 +254,7 @@ const InstructionsPage = () => {
                   <span className="text-white">Overview</span>
                 </button>
               <button
+              type="button"
                 onClick={navigateToNextPage}
                 className="get-started group relative px-8 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md-text-2xl shadow-2xl shadow-[#ff910025] mr-8 my-8"
               >
