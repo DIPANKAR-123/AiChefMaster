@@ -151,11 +151,11 @@ const navigateToNextPage = () => {
                       <input
                         type="radio"
                         name="veg_non_veg"
-                        value="Vegetarian"
-                        checked={form.veg_non_veg === "Vegetarian"}
+                        value="Vegeterian"
+                        checked={form.veg_non_veg === "Vegeterian"}
                         onChange={inputHandler}
                       />
-                      <label className="text-white">Vegetarian</label>
+                      <label className="text-white">Vegeterian</label>
                     </div>
 
                     <div>
