@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { LuChefHat } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
-
+import { useAuthContext } from "../hooks/useAuthContext";
 
 
 
 const DashboardPage = () => {
-  
+  const {user} = useAuthContext()
   const initialFormState = JSON.parse(localStorage.getItem("formData")) || {
     chef:"",
     dish_picture: null,
@@ -22,12 +22,19 @@ const DashboardPage = () => {
   };
 
   
-
+ 
   
 
   
 
   const [form, setForm] = useState(initialFormState);
+
+  useEffect(() => {
+    if (user && user.account_id) {
+      const updatedFormData = { ...form, chef: user.account_id };
+      localStorage.setItem("formData", JSON.stringify(updatedFormData));
+    }
+  }, [form]);
 
 
   const saveFormDataToLocalStorage = (form) => {

@@ -8,16 +8,34 @@ import toast, { Toaster } from "react-hot-toast";
 
 const InstructionsPage = () => {
 
-
-
-
-
   const navigate = useNavigate();
   const userToken = JSON.parse(localStorage.getItem("user"));
+
   const initialFormData = JSON.parse(localStorage.getItem("formData")) || {
+    
+    dish_picture: null,
+    name: "",
+    veg_non_veg: "vegetarian", // Changed to radio button with default value
+    popularity_state: "",
+    cuisine: "", // Changed to dropdown
+    course_type: "", // Changed to dropdown
+    cooking_time: "",
     ingredients: [],
     instructions: [],
   };
+
+  const successInitialFormData = {
+    dish_picture: null,
+    name: "",
+    veg_non_veg: "vegetarian", // Changed to radio button with default value
+    popularity_state: "",
+    cuisine: "", // Changed to dropdown
+    course_type: "", // Changed to dropdown
+    cooking_time: "",
+    ingredients: [],
+    instructions: [],
+  }
+
   const [form, setForm] = useState(initialFormData);
   const {user} = useAuthContext()
 
@@ -41,16 +59,14 @@ const InstructionsPage = () => {
   }, [formData]);
 
 
-  const saveFormDataToLocalStorage = (formData) => {
-    localStorage.setItem("formData", JSON.stringify(formData));
-  };
   const clearFormDataFromLocalStorage = () => {
     localStorage.removeItem("formData");
   };
+
   const submitHandler = async (e) => {
     e.preventDefault();
     setisLoading(true);
-  
+  console.log(formData)
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}api/dish/create/`, {
         method: "POST",
@@ -66,18 +82,23 @@ const InstructionsPage = () => {
         const responseData = await response.json();
         console.log("Dish created successfully:", responseData);
         toast.success("Dish Created");
+        localStorage.removeItem("formData");
+         setFormData(successInitialFormData)
       } else {
+        setisLoading(false)
         const errorData = await response.json();
         console.error("Error creating dish:", response.statusText);
         toast.error(errorData.message || "Something went wrong");
+        console.log(formData)
       }
     } catch (error) {
+      setisLoading(false)
       console.error("An error occurred:", error);
       toast.error("Something went wrong");
     }
-    setisLoading(false)
-    setFormData(initialFormData);
-    clearFormDataFromLocalStorage();
+    
+    
+    
   };
   
 
@@ -146,9 +167,9 @@ const InstructionsPage = () => {
               Ingredients <IoIosPie/>
             </p>
             <div className="bg-transparent rounded-xl p-4 py-8 flex flex-col justify-center items-center">
-              <form  className="w-full">
+              <div className="w-full">
                 <ul className="flex flex-wrap gap-4 my-2 w-full">
-                  {formData.ingredients.map((ingredient, index) => (
+                  {formData.ingredients.length>0 && formData.ingredients.map((ingredient, index) => (
                     <li
                       key={index}
                       className="bg-amber-600 font-medium flex rounded-md items-center gap-2 px-2 py-1"
@@ -197,7 +218,7 @@ const InstructionsPage = () => {
                     Submit
                   </button>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
 
@@ -262,15 +283,15 @@ const InstructionsPage = () => {
                 <span className="text-white">Back</span>
               </button>
 
-              <button
-  onClick={submitHandler}
-  className={`${
-    isLoading ? 'cursor-wait' : 'cursor-pointer'
-  } get-started group relative px-8 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md:text-2xl shadow-2xl shadow-[#ff910025] mr-8 my-8`}
->
-  <div className="absolute inset-0 w-0 bg-[#ff910032] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-  <span className="text-white">Submit</span>
-</button>
+            <button
+              onClick={submitHandler}
+              className={`${
+                isLoading ? 'cursor-wait' : 'cursor-pointer'
+              } get-started group relative px-8 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md:text-2xl shadow-2xl shadow-[#ff910025] mr-8 my-8`}
+            >
+              <div className="absolute inset-0 w-0 bg-[#ff910032] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+              <span className="text-white">Submit</span>
+            </button>
 
 
 
