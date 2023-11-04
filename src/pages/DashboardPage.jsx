@@ -106,7 +106,7 @@ const navigateToNextPage = () => {
 
       {/* CREATE DISH  */}
 
-      <div className="pt-16 w-[90%] lg:w-3/4">
+      <div className="pt-16 w-[90%] lg:w-1/2">
         <div className=" py-3">
           <p className="text-white text-2xl font-semibold">
             Enter details of a new dish
@@ -155,7 +155,7 @@ const navigateToNextPage = () => {
                         checked={form.veg_non_veg === "Vegeterian"}
                         onChange={inputHandler}
                       />
-                      <label className="text-white">Vegeterian</label>
+                      <label className="text-white px-2">Vegeterian</label>
                     </div>
 
                     <div>
@@ -167,7 +167,7 @@ const navigateToNextPage = () => {
                         checked={form.veg_non_veg === "NonVeg"}
                         onChange={inputHandler}
                       />
-                      <label className="text-white">NonVeg</label>
+                      <label className="text-white px-2">Non-Vegetarian</label>
                     </div>
                     </div>
                   </div>

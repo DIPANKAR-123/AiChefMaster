@@ -6,6 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useAuthContext } from "../hooks/useAuthContext";
 import toast, { Toaster } from "react-hot-toast";
 
+
 const InstructionsPage = () => {
 
   const navigate = useNavigate();
@@ -159,14 +160,14 @@ const InstructionsPage = () => {
   return (
     <div className="mt-32 w-screen h-full font-primary flex justify-center items-center">
 
-      <form action=""  className="bg-gradient-to-b from-zinc-500 to-black p-0.5 w-[90%] lg:w-3/4 rounded-lg">
+      <form action=""  className="bg-gradient-to-b from-zinc-500 to-black p-0.5 w-[90%] lg:w-1/2 rounded-lg">
         <div className="bg-gradient-to-b from-zinc-950 to-black items-center relative backdrop-filter backdrop-blur-xl rounded-lg">
           <div className='w-[400px] h-[400px] rounded-full absolute top-[-40px] left-[-40px] blur-3xl z-[-10] bg-[#14318629]'></div>
-          <div className="flex flex-col p-4 w-full">
-            <p  className="text-white text-3xl text-center flex justify-center items-center gap-2 font-medium pb-2">
+          <div className="flex flex-col p-1 md:p-2 lg:p-4 w-full">
+            <p  className="text-white text-3xl text-center flex justify-center items-center gap-2 font-medium py-4">
               Ingredients <IoIosPie/>
             </p>
-            <div className="bg-transparent rounded-xl p-4 py-8 flex flex-col justify-center items-center">
+            <div className="bg-transparent rounded-xl p-2 py-4 flex flex-col justify-center items-center">
               <div className="w-full">
                 <ul className="flex flex-wrap gap-4 my-2 w-full">
                   {formData.ingredients.length>0 && formData.ingredients.map((ingredient, index) => (
@@ -184,8 +185,8 @@ const InstructionsPage = () => {
                     </li>
                   ))}
                 </ul>
-                <div className="flex flex-col lg:flex-row gap-4">
-                  <div className="w-full lg:w-1/2 py-4">
+                <div className="flex flex-col lg:flex-row gap-0 lg:gap-4">
+                  <div className="w-full lg:w-1/2 pt-4">
                     <label className="text-white block">Name</label>
                     <input
                       type="text"
@@ -197,7 +198,7 @@ const InstructionsPage = () => {
                     />
                   </div>
 
-                  <div className="w-full lg:w-1/2 py-4">
+                  <div className="w-full lg:w-1/2 pt-4">
                     <label className="text-white block">Quantity</label>
                     <input
                       type="number"
@@ -209,11 +210,11 @@ const InstructionsPage = () => {
                     />
                   </div>
                 </div>
-                <div>
+                <div className="flex w-full items-center justify-center">
                   <button
                   onClick={handleIngredientSubmit}
                     type="submit"
-                    className="text-white bg-zinc-600 p-2 my-4 mx-auto rounded-md hover-bg-zinc-400"
+                    className="text-white border border-zinc-600 bg-zinc-900 p-2 px-6 my-4 rounded-xl hover:bg-zinc-950 "
                   >
                     Submit
                   </button>
@@ -224,7 +225,7 @@ const InstructionsPage = () => {
 
           {/* Instructions */}
           
-            <p className="text-white text-3xl text-center flex items-center justify-center gap-2 font-medium">Instructions <IoIosPaper/></p>
+            <p className="text-white text-3xl text-center py-4  flex items-center justify-center gap-2 font-medium">Instructions <IoIosPaper/></p>
           
 
           <div className=" ">
@@ -243,9 +244,9 @@ const InstructionsPage = () => {
               </div>
             </div>
             ))}
-            <div className="flex full pt-3 px-8 ">
+            <div className="flex full pt-3 px-4 ">
               <div className="items center w-full lg-w-3/4">
-                <label className="text-white font-medium text-md">New Step</label>
+                <label className="text-white font-medium text-md">Enter a new Step</label>
                 <div className="flex flex-row pt-2 justify-center items-center">
                 <textarea
                   type="textarea"
@@ -264,36 +265,41 @@ const InstructionsPage = () => {
           </div>
 
           <div>
-            <div className="flex items-center justify-center">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 my-8">
+              <div className="flex gap-4">
 
             <button
             type="button"
                   onClick={btnHandler}
-                  className="get-started group relative px-8 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md:text-2xl shadow-2xl shadow-[#ff910025] mr-8 my-8"
+                  className="get-started group relative px-4 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md:text-2xl shadow-2xl shadow-[#ff910025] "
                 >
                   <div className="absolute inset-0 w-0 bg-[#ff910032] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
                   <span className="text-white">Overview</span>
                 </button>
+
               <button
               type="button"
                 onClick={navigateToNextPage}
-                className="get-started group relative px-8 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md-text-2xl shadow-2xl shadow-[#ff910025] mr-8 my-8"
+                className="get-started group relative px-4 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md-text-2xl shadow-2xl shadow-[#ff910025] "
               >
                 <div className="absolute inset-0 w-0 bg-[#ff910032] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
                 <span className="text-white">Back</span>
               </button>
 
+              
+              
+              </div>
             <button
               onClick={submitHandler}
               className={`${
                 isLoading ? 'cursor-wait' : 'cursor-pointer'
-              } get-started group relative px-8 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md:text-2xl shadow-2xl shadow-[#ff910025] mr-8 my-8`}
+              } get-started group relative px-4 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md:text-2xl shadow-2xl shadow-[#ff910025] `}
             >
               <div className="absolute inset-0 w-0 bg-[#ff910032] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
               <span className="text-white">Submit</span>
             </button>
 
-
+           
 
               {open ? (
           <div className="absolute top-0 bg-gradient-to-b from-[#00000011] backdrop-filter shadow-xl backdrop-blur-xl to-black w-full  h-full rounded-xl bg-gradient  text-white p-4">
