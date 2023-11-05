@@ -21,7 +21,7 @@ function App() {
     <div>
     <BrowserRouter>
       <Navbar/> 
-      <div className='pages'>
+      <div className='pages '>
         <Routes>
           <Route path='/' element={<HomePage/>}/>
           <Route path='/dashboard' element={!user?<SignupPage/>: <DashboardPage/>}/>

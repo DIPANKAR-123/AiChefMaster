@@ -32,9 +32,9 @@ const SignupPage = () => {
   
 
   return (
-    <div className='px-4 sm:px-4  max-w-screen overflow-hidden py-16'>
+    <div className='px-4 sm:px-4 h-screen max-w-screen overflow-hidden mt-32 lg:mt-20'>
       <form className='signup  flex flex-col  justify-center  items-center text-white font-primary' onSubmit={handleSubmit}>
-      <h3 className='text-2xl font-semibold  mt-8  text-center  py-2'>Create a new account</h3>
+      <h3 className='text-4xl font-semibold  mt-8  text-center  py-2'>Create a new account</h3>
       <p className='text-center mb-8 text-base text-zinc-300'>Enter the fields below to get started</p>
       
       

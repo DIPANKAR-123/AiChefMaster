@@ -9,6 +9,7 @@ const SearchPage = () => {
 
     const [query, setQuery] = useState("");
     const [resultDishes, setresultDishes] = useState([]);
+    const [dish, setDish]=useState({});
     const [message, setMessage] = useState("");
     const [isLoading, setisLoading] = useState(false)
     const [errormsg, setErrormsg] = useState("");
@@ -60,6 +61,7 @@ const SearchPage = () => {
 
     const showDish=()=>{
         setOpen((prev) => !prev);
+        console.log("dish")
     }
 
   return (
@@ -88,11 +90,16 @@ const SearchPage = () => {
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-8 xl:grid-cols-4 gap-8'>
     {resultDishes.length > 0 && (
     resultDishes.map((dish, index) => (
-    <DishResultCard onClick={showDish} key={index} dish={dish} />
-    
+        <div className='flex flex-col'>
+    <DishResultCard  key={index} dish={dish} />
+    <button onClick={showDish}>Show more</button>
+    </div>
   ))
 )}
+
 </div>
+{open && (<div className='flex absolute top-90 justify-center w-screen h-screen text-white text-3xl'> <p>DISH OPEN</p></div>)}
+
   </div>
   
   )

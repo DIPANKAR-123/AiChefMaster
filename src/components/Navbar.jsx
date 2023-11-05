@@ -23,7 +23,7 @@ const Navbar = () => {
   }
 
   return (
-    <header className='bg-black border-b text-white border-zinc-600  z-20 py-4 fixed top-0 left-0 px-4 md:px-8 w-screen  flex items-center justify-between md:justify-around'>
+    <header className='bg-black border-b shadow-2xl shadow-black text-white border-zinc-600  z-20 py-4 fixed top-0 left-0 px-4 md:px-8 w-screen  flex items-center justify-between md:justify-around'>
       <h1 >
         <a href='/'><img src="./assets/LOGO-text.png" alt="logo" /></a>
       </h1>

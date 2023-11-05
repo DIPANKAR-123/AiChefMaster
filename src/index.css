@@ -18,16 +18,34 @@
 
 
 body {
-  background: #000;
+  background-color: #000;
   overflow-x: hidden;
-  --dot-bg: black;
-  --dot-color: rgb(255, 255, 255);
+  --dot-bg: rgb(3, 4, 5);
+  --dot-color: rgb(1, 1, 1);
   --dot-size: 1px;
-  --dot-space: 22px;
+  --dot-space: 10px;
   background:
     linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
     linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
-    linear-gradient(to top, #000000, rgba(0, 0, 88, 0));
+    linear-gradient(to top, #000000, rgba(13, 87, 207, 0.99));
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+/* This is just to transition when you change the viewport size. */
+* {
+  transition: all 0.25s ease-out;
 }
 
 .get-started {
