@@ -55,12 +55,20 @@ const MobileNav = () => {
             <NavLink  to='/'>Home</NavLink>
             </li>
 
-            <li key='about' className=' text-base  py-4   transition-all duration-300    hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
+            <li key='dashboard' className=' text-base  py-4   transition-all duration-300    hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
             <NavLink  to='/dashboard'>Dashboard</NavLink>
             </li>
 
-            <li key='tasks' className=' text-base  py-4   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
+            <li key='contact' className=' text-base  py-4   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
             <NavLink  to='/contact'>Contact</NavLink>
+            </li>
+
+            <li key='history' className=' text-base  py-4   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
+            <NavLink  to='/history'>History</NavLink>
+            </li>
+
+            <li key='search' className=' text-base  py-4   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
+            <NavLink  to='/search'>Search</NavLink>
             </li>
           
             {user && (<div className='flex-col flex items-center md:flex-row'>

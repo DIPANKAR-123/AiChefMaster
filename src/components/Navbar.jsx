@@ -32,12 +32,20 @@ const Navbar = () => {
             <li key='home' className=' text-lg font-primary px-4 h-full  transition-all duration-300   py-2 hover:text-amber-500'>
             <NavLink  to='/' >Home</NavLink>
             </li>
+            <li key='search' className=' text-lg font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-amber-500'>
+            <NavLink  to='/search'>Search Dish</NavLink>
+            </li>
             <li key='dashboard' onClick={handleDashboardClick} className=' text-lg font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-amber-500'>
             <NavLink  to='/dashboard'>Create Dish</NavLink>
+            </li>
+            
+            <li key='history' className=' text-lg font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-amber-500'>
+            <NavLink  to='/history'>History</NavLink>
             </li>
             <li key='contact' className=' text-lg font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-amber-500'>
             <NavLink  to='/contact'>Contact</NavLink>
             </li>
+            
       </ul>
           
            <div className='hidden md:flex md:items-center  h-full'>

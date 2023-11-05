@@ -7,6 +7,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import toast, { Toaster } from "react-hot-toast";
 
 
+
 const InstructionsPage = () => {
 
   const navigate = useNavigate();
@@ -37,11 +38,8 @@ const InstructionsPage = () => {
     instructions: [],
   }
 
-  const [form, setForm] = useState(initialFormData);
   const {user} = useAuthContext()
-
   const [open, setOpen] = useState(false);
-
   const [formData, setFormData] = useState(initialFormData);
   const [ingredientName, setIngredientName] = useState("");
   const [ingredientQuantity, setIngredientQuantity] = useState(0);
@@ -158,16 +156,17 @@ const InstructionsPage = () => {
   };
 
   return (
-    <div className="mt-32 w-screen h-full font-primary flex justify-center items-center">
+    <div className="my-8 w-screen h-screen font-primary flex justify-center text-white items-center">
 
-      <form action=""  className="bg-gradient-to-b from-zinc-500 to-black p-0.5 w-[90%] lg:w-1/2 rounded-lg">
+      <form action=""  className="bg-gradient-to-b from-zinc-500 to-transparent shadow-xl shadow-black p-0.5 w-[90%] lg:w-1/2 rounded-lg">
         <div className="bg-gradient-to-b from-zinc-950 to-black items-center relative backdrop-filter backdrop-blur-xl rounded-lg">
           <div className='w-[400px] h-[400px] rounded-full absolute top-[-40px] left-[-40px] blur-3xl z-[-10] bg-[#14318629]'></div>
           <div className="flex flex-col p-1 md:p-2 lg:p-4 w-full">
-            <p  className="text-white text-3xl text-center flex justify-center items-center gap-2 font-medium py-4">
+            <p  className=" text-3xl text-center flex justify-center items-center gap-2 font-medium py-4">
               Ingredients <IoIosPie/>
             </p>
-            <div className="bg-transparent rounded-xl p-2 py-4 flex flex-col justify-center items-center">
+            <p className="text-center text-sm italic font-semibold text-zinc-400">* Enter quantity for 1 portion</p>
+            <div className="bg-transparent rounded-xl p-4 lg:p-8 py-4 flex flex-col justify-center items-center">
               <div className="w-full">
                 <ul className="flex flex-wrap gap-4 my-2 w-full">
                   {formData.ingredients.length>0 && formData.ingredients.map((ingredient, index) => (
@@ -228,7 +227,7 @@ const InstructionsPage = () => {
             <p className="text-white text-3xl text-center py-4  flex items-center justify-center gap-2 font-medium">Instructions <IoIosPaper/></p>
           
 
-          <div className=" ">
+          <div className="p-1 lg:p-8 ">
             {formData.instructions.map((instruction, index) => (
               <div key={index} className="w-full pt-3 px-2 md:px-4 lg:px-8 ">
               <div className="items-center w-full lg:w-3/4">
@@ -265,7 +264,7 @@ const InstructionsPage = () => {
           </div>
 
           <div>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 my-8">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 py-8">
               <div className="flex gap-4">
 
             <button

@@ -8,7 +8,8 @@ import ContactPage from './pages/ContactPage'
 import './App.css'
 import Navbar from './components/Navbar'
 import InstructionsPage from './pages/InstructionsPage'
-
+import HistoryPage from "./pages/HistoryPage"
+import SearchPage from "./pages/SearchPage"
 
 import { useAuthContext } from './hooks/useAuthContext'
 function App() {
@@ -28,7 +29,9 @@ function App() {
           <Route path='/contact' element={<ContactPage/>}/>
           <Route path='/signup' element={<SignupPage/>}/>
           <Route path='/login' element={!user?<LoginPage/>:< Navigate to='/dashboard'/>}/>
-
+          <Route path='/history' element={!user?<SignupPage/>: <HistoryPage/>}/>
+          <Route path='/search' element={!user?<SignupPage/>: <SearchPage/>}/>
+          
         </Routes>
       </div>
     </BrowserRouter> 
