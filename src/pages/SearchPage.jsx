@@ -9,11 +9,11 @@ const SearchPage = () => {
 
     const [query, setQuery] = useState("");
     const [resultDishes, setresultDishes] = useState([]);
-    const [dish, setDish]=useState({});
+    
     const [message, setMessage] = useState("");
     const [isLoading, setisLoading] = useState(false)
     const [errormsg, setErrormsg] = useState("");
-    const [open, setOpen] = useState(false);
+  
 
     const handleFormSubmit = async(e) =>{
         e.preventDefault();
@@ -59,10 +59,7 @@ const SearchPage = () => {
         setQuery(e.target.value); 
     }
 
-    const showDish=()=>{
-        setOpen((prev) => !prev);
-        console.log("dish")
-    }
+    
 
   return (
     <div className="mt-20 font-primary w-full min-h-screen flex flex-col text-white  items-center"> {/* Add 'items-center' to center horizontally */}
@@ -92,13 +89,12 @@ const SearchPage = () => {
     resultDishes.map((dish, index) => (
         <div className='flex flex-col'>
     <DishResultCard  key={index} dish={dish} />
-    <button onClick={showDish}>Show more</button>
     </div>
   ))
 )}
 
 </div>
-{open && (<div className='flex absolute top-90 justify-center w-screen h-screen text-white text-3xl'> <p>DISH OPEN</p></div>)}
+
 
   </div>
   

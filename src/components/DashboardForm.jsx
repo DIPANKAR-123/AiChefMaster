@@ -73,7 +73,7 @@ const navigateToNextPage = () => {
               <div className="flex flex-col pt-4">
                 <label
                   htmlFor=""
-                  className="text-white text-xl font-semibold pb-2"
+                  className="text-white text-md font-medium pb-2"
                 >
                   Dish Name
                 </label>
@@ -89,7 +89,7 @@ const navigateToNextPage = () => {
               </div>
 
               <div className="flex flex-col pt-4">
-                <label htmlFor="" className="text-white text-xl font-semibold pb-2">
+                <label htmlFor="" className="text-white text-md font-medium pb-2">
                     Veg or Non-veg
                 </label>
                 <select
@@ -101,7 +101,7 @@ const navigateToNextPage = () => {
                 >
                     
                     <option value="Vegeterian">Vegeterian</option>
-                    <option value="NonVeg">Non-Vegetarian</option>
+                    <option value="Non-Vegeratian">Non-Vegetarian</option>
                 </select>
                 </div>
 
@@ -109,7 +109,7 @@ const navigateToNextPage = () => {
               <div className="flex flex-col pt-4">
                 <label
                   htmlFor=""
-                  className="text-white text-xl font-semibold pb-2"
+                  className="text-white text-md font-medium pb-2"
                 >
                   Popularity State
                 </label>
@@ -120,14 +120,14 @@ const navigateToNextPage = () => {
                   placeholder="Hyderabad"
                   onChange={inputHandler}
                   value={form.popularity_state}
-                  className="border px-2 py-1 text-white text-lg bg-[#060606] border-slate-500 rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
+                  className="border px-2 py-1 text-white text-lg bg-[#000000] border-slate-500 rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
                 />
               </div>
 
               <div className="flex flex-col pt-4">
                 <label
                   htmlFor=""
-                  className="text-white text-xl font-semibold pb-2"
+                  className="text-white text-md font-medium pb-2"
                 >
                   Cuisine
                 </label>
@@ -137,33 +137,40 @@ const navigateToNextPage = () => {
                 name="cuisine"
                 onChange={inputHandler}
                 value={form.cuisine}
-                className="border px-2 py-1 text-white text-lg bg-[#060606] border-slate-500 rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
+                className="border px-2 py-1 text-white text-lg bg-black border-slate-500 rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
                 placeholder="Select Cuisine"
               />
               </div>
 
               <div className="flex flex-col pt-4">
-                <label
-                  htmlFor=""
-                  className="text-white text-xl font-semibold pb-2"
-                >
-                  Course Type
-                </label>
+  <label htmlFor="course_type" className="text-white text-md font-medium pb-2">
+    Course Type
+  </label>
 
-                <input
-              type="text"
-              name="course_type"
-              onChange={inputHandler}
-              value={form.course_type}
-              className="border px-2 py-1 text-white text-lg bg-[#060606] border-slate-500 rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
-              placeholder="Select Course Type"
-            />
-              </div>
+  <select
+    name="course_type"
+    onChange={inputHandler}
+    value={form.course_type}
+    className="border px-2 py-1 text-white text-lg bg-black border-slate-500 rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
+  >
+    <option value="">Select Course Type</option>
+    <option value="Appetizers">Appetizers</option>
+    <option value="Main Course">Main Course</option>
+    <option value="Side Dishes">Side Dishes</option>
+    <option value="Desserts">Desserts</option>
+    <option value="Beverages">Beverages</option>
+    <option value="Breakfast">Breakfast</option>
+    <option value="Drinks">Tea or Coffee</option>
+    <option value="Brunch">Brunch</option>
+    <option value="Snacks">Snacks</option>
+  </select>
+</div>
+
 
               <div className="flex flex-col pt-4">
                 <label
                   htmlFor=""
-                  className="text-white text-xl font-semibold pb-2"
+                  className="text-white text-md font-medium pb-2"
                 >
                   Cooking Time
                 </label>
@@ -174,7 +181,7 @@ const navigateToNextPage = () => {
                   placeholder="eg. 20min"
                   onChange={inputHandler}
                   value={form.cooking_time}
-                  className="border px-2 py-1 text-white text-lg bg-[#060606] border-slate-500 rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
+                  className="border px-2 py-1 text-white text-lg bg-black border-slate-500 rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
                 />
               </div>
 
