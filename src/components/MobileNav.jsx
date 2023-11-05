@@ -49,31 +49,31 @@ const MobileNav = () => {
              cursor-pointer text-white'><IoMdClose/></div>
             {/* menu list */}
             <ul className='h-full flex flex-col justify-center
-            items-center gap-y-8  font-primary first-letter:first
+            items-center gap-y-6  font-primary first-letter:first
             font-medium text-2xl '>
-            <li key='home' className=' text-base  py-4   transition-all duration-300    hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
+            <li key='home' className=' text-base  py-1   transition-all duration-300    hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
             <NavLink  to='/'>Home</NavLink>
             </li>
-
-            <li key='dashboard' className=' text-base  py-4   transition-all duration-300    hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
+            <li key='search' className=' text-base  pb-1  transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
+            <NavLink  to='/search'>Search</NavLink>
+            </li>
+            <li key='dashboard' className=' text-base  pb-1   transition-all duration-300    hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
             <NavLink  to='/dashboard'>Dashboard</NavLink>
             </li>
-
-            <li key='contact' className=' text-base  py-4   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
+            <li key='history' className=' text-base  pb-1   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
+            <NavLink  to='/history'>History</NavLink>
+            </li>
+            <li key='contact' className=' text-base  pb-1   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
             <NavLink  to='/contact'>Contact</NavLink>
             </li>
 
-            <li key='history' className=' text-base  py-4   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
-            <NavLink  to='/history'>History</NavLink>
-            </li>
+            
 
-            <li key='search' className=' text-base  py-4   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
-            <NavLink  to='/search'>Search</NavLink>
-            </li>
+            
           
-            {user && (<div className='flex-col flex items-center md:flex-row'>
-            <span className=' text-base  py-4  border-r-2 border-hidden md: border-white '>{user.first_name}</span>
-          <button onClick={handleClick} className='border text-base border-amber-500 px-2  rounded-full mx-2 '>Logout</button>
+            {user && (<div className='flex-col flex items-center  md:flex-row'>
+            <span className=' text-base  pb-1  border-r-2 border-hidden md: border-white '>{user.first_name}</span>
+          <button onClick={handleClick} className='border text-base my-4 border-amber-500 px-2  rounded-full mx-2 '>Logout</button>
             </div>)}
 
             {!user && (

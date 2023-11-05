@@ -10,7 +10,7 @@ const History = () => {
   useEffect(() => {
     const fetchDishes = async () => {
       try {
-        const apiUrl = `${import.meta.env.VITE_API_URL}api/chef/1/dishes/`;
+        const apiUrl = `${import.meta.env.VITE_API_URL}api/chef/${user.account_id}/dishes/`;
   
         const response = await fetch(apiUrl, {
           method: 'GET',
