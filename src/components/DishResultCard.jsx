@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { IoIosAdd, IoIosClose, IoIosPaper, IoIosPie } from "react-icons/io";
+import {  IoIosClose, } from "react-icons/io";
 import Overview from './Overview';
 
 const DishResultCard = ({dish}) => {
@@ -27,7 +27,7 @@ const DishResultCard = ({dish}) => {
     {dish.veg_non_veg === "vegetarian" ? <p className='rounded-xl bg-[#0f83053e] my-1 text-center w-1/2 border p-0.5 border-emerald-500'>{dish.veg_non_veg}</p> : <p className='rounded-xl bg-[#cd1d1d2c] p-0.5 text-center w-1/2 border my-1 border-rose-500'>{dish.veg_non_veg}</p>}
     </div>
 
-    <button onClick={showDish} className='text-base bg-black border border-zinc-700 p-2 rounded-xl'>Show more</button>
+    <button onClick={showDish} className='text-base bg-black hover:bg-zinc-900 border border-zinc-700 p-2 rounded-xl'>See more</button>
    
     <div className={'popup-media transition-all  w-full max-auto justify-center ' } style={{display: open?'flex':'none'}}>
             <span onClick={(prev)=>setOpen(!prev)} className='absolute cursor-pointer right-0 p-8'><IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-[#361316] text-3xl" /></span>
