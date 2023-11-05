@@ -156,7 +156,7 @@ const InstructionsPage = () => {
   };
 
   return (
-    <div className="mt-36 lg:mt-20  w-screen h-screen font-primary flex justify-center text-white items-center">
+    <div className="mt-36 lg:mt-24  w-screen min-h-screen font-primary flex justify-center text-white items-center">
 
       <form action=""  className="bg-gradient-to-b from-zinc-500 to-transparent shadow-xl shadow-black p-0.5 w-[90%] lg:w-1/2 rounded-lg">
         <div className="bg-gradient-to-b from-zinc-950 to-black items-center relative backdrop-filter backdrop-blur-xl rounded-lg">
