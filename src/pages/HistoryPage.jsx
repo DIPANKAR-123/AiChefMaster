@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthContext } from "../hooks/useAuthContext";
 import { CgProfile } from "react-icons/cg";
-import { AiOutlineMail, AiOutlineClockCircle, AiOutlineCalendar } from "react-icons/ai";
+import { AiOutlineMail, AiOutlineClockCircle, AiOutlineCalendar, AiOutlineHistory } from "react-icons/ai";
 import {  IoIosClose, } from "react-icons/io";
 import Overview from '../components/Overview';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -12,8 +12,10 @@ const History = () => {
   const [filterCuisine, setFilterCuisine] = useState("all"); // Use [variableName, setterFunction] syntax
   const [open, setOpen] = useState(false);
   const [dishView, setDishView] = useState({});
+  const [isLoading, setisLoading] = useState(false)
 
   const handleClick = async(id)=>{
+    setisLoading(true)
     try{
       const response = await fetch(`${import.meta.env.VITE_API_URL}api/dish/filter/${id}/id/`, {
         method: "GET",
@@ -33,7 +35,7 @@ const History = () => {
     }catch(err){
       console.log('Error :',err);
     }
-    
+    setisLoading(false);
   }
     
 
@@ -68,17 +70,18 @@ const History = () => {
 
   return (
     <div className='min-h-screen w-screen flex flex-col mt-32 items-center font-primary text-white'>
-      <p className='text-5xl font-semibold'>History</p>
-      <p className='text-2xl font-medium py-4'>List of dishes created by you</p>
+      <p className='text-3xl font-semibold flex text-amber-500 items-center gap-4'><AiOutlineHistory/>History</p>
+      <p className='text-xl trxt-center font-medium border-b mb-16 py-4'>List of dishes created by you</p>
        {/* Filter select input */}
-       <select className='bg-black text-white' value={filterCuisine} onChange={handleFilterChange}>
+       <p className='py-2 text-xl'>Cuisine</p>
+       <select className='bg-zinc-800 text-white px-4 py-2 mb-8 rounded-xl' value={filterCuisine} onChange={handleFilterChange}>
         <option value="all">All</option>
         <option value="Indian">Indian</option>
         <option value="Chinese">Chinese</option>
         {/* Add more filter options as needed */}
       </select>
       <div className='  flex w-screen justify-center '>
-      <div className=' grid grid-cols-1 lg:grid-cols-3 gap-8 items-center rounded-xl  p-2 lg:p-6 '>
+      <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center rounded-xl  p-2 lg:p-6 '>
         {dishes.length > 0 ? dishes.map((dish, index) => {
           // Parse the date string to a JavaScript Date object
           const createdDate = new Date(dish.created_at);
@@ -88,12 +91,14 @@ const History = () => {
           const formattedTime = createdDate.toLocaleTimeString();
           if (filterCuisine === 'all' || dish.cuisine === filterCuisine) {
             return (
-              <div index={index} onClick={()=>handleClick(dish.id)} className='border shadow-black shadow-xl w-[100%] flex gap-4 justify-between bg-[#1f1f1f64] hover:bg-[#3f3f3f64] items-center rounded-xl border-zinc-700 p-2 px-4 ' key={index}>
+              <div index={index} onClick={()=>handleClick(dish.id)} className={`${
+                isLoading ? 'cursor-wait' : 'cursor-pointer'
+              } border cursor-pointer shadow-black shadow-xl w-[100%] flex gap-4 justify-between bg-[#1f1f1f64] hover:bg-[#3f3f3f64] items-center rounded-xl border-zinc-700 p-2 px-4 `} key={index}>
                 <div className='flex flex-col'>
                  <div className='flex items-center gap-2 py-2'><p className='text-zinc-300'>#{dish.id}</p><p className='text-xl md:text-2xl font-medium'>{dish.name}</p></div> 
                   <div className=' '>
-                  <p className=' '>{dish.course_type}</p>
-                  <p className=''>{dish.cuisine}</p>
+                  <p className='font-medium '>{dish.course_type}</p>
+                  <p className='font-medium'>{dish.cuisine}</p>
                   </div>
                 </div>
                 
@@ -113,7 +118,7 @@ const History = () => {
          <div className={'popup-media transition-all  w-full max-auto justify-center ' } style={{display: open?'flex':'none'}}>
             <span onClick={(prev)=>setOpen(!prev)} className='absolute cursor-pointer right-0 p-8'><IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-[#361316] text-3xl" /></span>
             {open && <Overview form={dishView}/>}
-    </div> 
+        </div> 
         
       </div>
       </div>
