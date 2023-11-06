@@ -4,7 +4,7 @@ import DishResultCard from '../components/DishResultCard'
 import { useState } from 'react'
 import Message from '../components/Message'
 import CircularProgress from '@mui/material/CircularProgress';
-import Backdrop from '@mui/material/Backdrop';
+
 
 const SearchPage = () => {
 
@@ -100,9 +100,9 @@ const SearchPage = () => {
     </div>
   ))
 ) : (
-  isLoading ? (
+  isLoading && (
     <div className='flex flex-col w-screen justify-center items-center'><CircularProgress color="inherit" /></div>
-  ) : null
+  ) 
 )}
 
 

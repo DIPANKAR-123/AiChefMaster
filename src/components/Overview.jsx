@@ -3,7 +3,7 @@ import React from 'react'
 import { BiDish } from "react-icons/bi";
 
 const Overview = ({form}) => {
-    console.log(form.dishName)
+    
   return (
     <div className='w-full h-full flex flex-col justify-center items-center font-primary  text-white py-10 px-1 lg:px-8'>
       <p className='text-3xl text-center font-semibold text-amber-500 pb-4 flex items-center justify-center gap-4'>Dish Overview <BiDish/></p>
