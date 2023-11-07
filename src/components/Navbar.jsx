@@ -24,8 +24,9 @@ const Navbar = () => {
 
   return (
     <header className='shadow-xl bg-white   text-black border-slate-800  z-20 py-4 fixed top-0 left-0 px-4 md:px-8 w-screen  flex items-center justify-between md:justify-around'>
-      <h1 >
-        <a href='/'><img src="./assets/LOGO-text.png" alt="logo" /></a>
+      <h1 className='text-3xl font-semibold font-primary' >
+        {/* <a href='/'><img src="./assets/LOGO-text.png" alt="logo" /></a> */}
+        <a href="/">AIChefMaster</a>
       </h1>
 
       <ul className='hidden md:flex md:items-center h-full '>
