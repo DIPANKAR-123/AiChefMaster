@@ -31,7 +31,7 @@ const DishResultCard = ({dish}) => {
    
     <div className={'popup-media transition-all min-h-screen  w-full max-auto justify-center ' } style={{display: open?'flex':'none'}}>
             <span onClick={(prev)=>setOpen(!prev)} className='absolute cursor-pointer right-0 p-8'><IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-[#361316] text-3xl" /></span>
-            {open && <Overview form={dishView}/>}
+            {open && <Overview form={dishView} color={'text-white'}/>}
     </div>
     
   </div>

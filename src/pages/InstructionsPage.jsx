@@ -167,16 +167,15 @@ const InstructionsPage = () => {
 
 
   return (
-    <div className="mt-36 lg:mt-24  w-screen min-h-screen font-primary flex justify-center text-white items-center">
+    <div className="mt-36 lg:mt-24  w-screen min-h-screen font-primary flex justify-center  items-center">
 
-      <form action=""  className="bg-gradient-to-b from-zinc-500 to-transparent shadow-xl shadow-black p-0.5 w-[90%] lg:w-1/2 rounded-lg">
-        <div className="bg-gradient-to-b from-zinc-950 to-black items-center relative backdrop-filter backdrop-blur-xl rounded-lg">
-          <div className='w-[400px] h-[400px] rounded-full absolute top-[-40px] left-[-40px] blur-3xl z-[-10] bg-[#14318629]'></div>
+      <form action=""  className="bg-white shadow-xl  p-0.5 w-[90%] lg:w-1/2 rounded-lg">
+        <div className=" items-center relative backdrop-filter backdrop-blur-xl rounded-lg">
           <div className="flex flex-col p-1 md:p-2 lg:p-4 w-full">
             <p  className=" text-3xl text-center flex justify-center items-center gap-2 font-medium py-4">
               Ingredients <IoIosPie/>
             </p>
-            <p className="text-center text-sm italic font-semibold text-zinc-400">* Enter quantity for 1 portion</p>
+            <p className="text-center text-sm italic font-semibold text-zinc-700">* Enter quantity for 1 portion</p>
             <div className="bg-transparent rounded-xl p-4 lg:p-8 py-4 flex flex-col justify-center items-center">
               <div className="w-full">
                 <ul className="flex flex-wrap gap-4 my-2 w-full">
@@ -190,33 +189,33 @@ const InstructionsPage = () => {
                       </span>
                       <IoIosClose
                         onClick={() => removeIngredient(ingredient.name)}
-                        className="text-xl cursor-pointer text-black border border-black rounded-full"
+                        className="text-xl cursor-pointer  border  border-black hover:bg-amber-800 rounded-full"
                       />
                     </li>
                   ))}
                 </ul>
                 <div className="flex flex-col lg:flex-row gap-0 lg:gap-4">
                   <div className="w-full lg:w-1/2 pt-4">
-                    <label className="text-white block">Name</label>
+                    <label className=" block">Name</label>
                     <input
                       type="text"
                       name="ingredient_name"
                       value={ingredientName}
                       onChange={(e) => setIngredientName(e.target.value)}
                       placeholder="eg. Chicken"
-                      className="px-2 my-2 py-1 text-white text-lg w-full border border-zinc-700 bg-black rounded-md focus:border-orange-400 placeholder:italic outline-none"
+                      className="px-2 my-2 py-1  text-lg w-full border border-black  rounded-md focus:border-orange-400 placeholder:italic outline-none"
                     />
                   </div>
 
                   <div className="w-full lg:w-1/2 pt-4">
-                    <label className="text-white block">Quantity</label>
+                    <label className=" block">Quantity</label>
                     <input
                       type="number"
                       name="ingredient_quantity"
                       value={ingredientQuantity}
                       onChange={(e) => setIngredientQuantity(e.target.value)}
                       placeholder="eg. 200gm"
-                      className="px-2 my-2 py-1 text-white text-lg w-full border border-zinc-700 bg-black rounded-md placeholder:italic outline-none"
+                      className="px-2 my-2 py-1 text-black text-lg w-full border border-zinc-700  rounded-md placeholder:italic outline-none"
                     />
                   </div>
                 </div>
@@ -235,15 +234,15 @@ const InstructionsPage = () => {
 
           {/* Instructions */}
           
-            <p className="text-white text-3xl text-center py-4  flex items-center justify-center gap-2 font-medium">Instructions <IoIosPaper/></p>
+            <p className=" text-3xl text-center py-4  flex items-center justify-center gap-2 font-medium">Instructions <IoIosPaper/></p>
           
 
           <div className="p-1 lg:p-8 ">
             {formData.instructions.map((instruction, index) => (
               <div key={index} className="w-full pt-3 px-2 md:px-4 lg:px-8 ">
               <div className="items-center w-full lg:w-3/4">
-                <div className="text-white font-medium text-md flex w-full ">
-                  <span className="text-white px-4 max-w-full flex gap-2">
+                <div className=" font-medium text-md flex w-full ">
+                  <span className=" px-4 max-w-full flex gap-2">
                     <p>Step</p> <p>{index + 1} </p>  <p> -</p>
                   </span>
                   <p className="flex max-w-full break-all">{instruction.step}</p>
@@ -264,7 +263,7 @@ const InstructionsPage = () => {
                   value={newInstruction}
                   onChange={(e) => setNewInstruction(e.target.value)}
                   placeholder={`Enter a new step`}
-                  className="border border-zinc-700 w-full px-4 py-1  text-white text-lg bg-black rounded-md placeholder:italic placeholder-text-sm outline-none focus-border-orange-400"
+                  className="border border-black w-full px-4 py-1  text-black text-lg  rounded-md placeholder:italic placeholder-text-sm outline-none focus-border-orange-400"
                 />
                 <button onClick={addInstruction} type="button" className="px-4 ">
                       <IoIosAdd className="text-green-500 text-3xl rounded-full border border-green-600 hover:bg-[#133615]" />
@@ -281,18 +280,18 @@ const InstructionsPage = () => {
             <button
             type="button"
                   onClick={btnHandler}
-                  className="get-started group relative px-4 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md:text-2xl shadow-2xl shadow-[#ff910025] "
+                  className="bg-zinc-950 hover:bg-zinc-800 px-4 py-3 overflow-hidden font-medium rounded-xl  text-xl md:text-2xl shadow-2xl  "
                 >
-                  <div className="absolute inset-0 w-0 bg-[#ff910032] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                  
                   <span className="text-white">Overview</span>
                 </button>
 
               <button
               type="button"
                 onClick={navigateToNextPage}
-                className="get-started group relative px-4 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md-text-2xl shadow-2xl shadow-[#ff910025] "
+                className="bg-zinc-950 hover:bg-zinc-800 group relative px-4 py-3 overflow-hidden font-medium rounded-xl  text-xl md-text-2xl shadow-2xl  "
               >
-                <div className="absolute inset-0 w-0 bg-[#ff910032] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+    
                 <span className="text-white">Back</span>
               </button>
 
@@ -303,23 +302,23 @@ const InstructionsPage = () => {
               onClick={submitHandler}
               className={`${
                 isLoading ? 'cursor-wait' : 'cursor-pointer'
-              } get-started group relative px-4 py-3 overflow-hidden font-medium rounded-xl border border-yellow-800 text-xl md:text-2xl shadow-2xl shadow-[#ff910025] `}
+              } bg-zinc-950 hover:bg-zinc-800 px-4 py-3 overflow-hidden font-medium rounded-xl   text-xl md:text-2xl shadow-2xl  `}
             >
-              <div className="absolute inset-0 w-0 bg-[#ff910032] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+              
               <span className="text-white">Submit</span>
             </button>
 
            
 
               {open ? (
-          <div className="absolute top-0 bg-gradient-to-b from-[#00000011] backdrop-filter shadow-xl backdrop-blur-xl to-black w-full  h-full rounded-xl bg-gradient  text-white p-4">
+          <div className="absolute top-0  bg-white backdrop-filter shadow-xl backdrop-blur-xl  w-full  h-full rounded-xl bg-gradient  text-black p-4">
             <div className="flex justify-end">
               <AiOutlineClose
                 onClick={btnHandler}
                 className="cursor-pointer text-3xl text-rose-600 border border-rose-500 p-1  hover:bg-[#361316] rounded-full"
               />
             </div>
-            <Overview form={formData} />
+            <Overview form={formData} color={'text-black'} />
           </div>
         ) : (
           ""

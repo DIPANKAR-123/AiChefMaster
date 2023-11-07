@@ -65,8 +65,8 @@ const navigateToNextPage = () => {
     {/* form  */}
     
       
-        <div className="bg-gradient-to-b from-zinc-400 to-white p-0.5 w-full  rounded-lg shadow-xl">
-          <div className="bg-gradient-to-b from-zinc-100 to-white relative backdrop-filter backdrop-blur-xl rounded-lg items-center">
+        <div className="bg-white p-0.5 w-full  rounded-lg shadow-xl">
+          <div className="bg-gradient-to-b  relative backdrop-filter backdrop-blur-xl rounded-lg items-center">
           {/* <div className='w-[400px] h-[400px]  rounded-full absolute top-[-40px] left-[-40px] blur-3xl z-[-10] bg-[#14318629]  '></div>  */}
             <div className="grid grid-cols-1 lg:grid-cols-2 p-4 lg:p-16 gap-8">
 
@@ -198,7 +198,7 @@ const navigateToNextPage = () => {
     <div className="flex items-center justify-center mt-10">
           <button
                 onClick={navigateToNextPage}
-                className="  bg-zinc-950 hover:bg-zinc-700 px-8 py-3 overflow-hidden font-medium rounded-xl border  text-xl md:text-2xl  "
+                className="  bg-zinc-950 hover:bg-zinc-800 px-8 py-3 overflow-hidden font-medium rounded-xl border  text-xl md:text-2xl  "
               >
                 
                 <span className=" text-white" >Next</span>

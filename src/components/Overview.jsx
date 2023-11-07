@@ -2,10 +2,10 @@
 import React from 'react'
 import { BiDish } from "react-icons/bi";
 
-const Overview = ({form}) => {
+const Overview = ({form, color}) => {
     
   return (
-    <div className='w-full min-h-screen pt-16 flex flex-col justify-center items-center font-primary  text-white py-10 px-1 lg:px-8'>
+    <div className={`w-full min-h-screen pt-16 flex flex-col justify-center items-center font-primary  ${color} py-10 px-1 lg:px-8`}>
       <p className='text-3xl text-center font-semibold text-amber-500 pb-4 flex items-center justify-center gap-4'>Dish Overview <BiDish/></p>
       <div className=''>
        <div className='flex items-center gap-4 border-b border-zinc-500'><p className='p-1  py-2 font-semibold text-xl'>Dish Name - </p> <span className='text-lg '>{form.name}</span></div>
