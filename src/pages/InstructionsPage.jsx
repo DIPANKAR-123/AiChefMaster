@@ -96,7 +96,14 @@ const InstructionsPage = () => {
       toast.error("Something went wrong");
     }
     
+    const backPage=()=>{
+      setTimeout(() => {
+        navigate('/dashboard')
+      }, 2000);
     
+    }
+
+    backPage()
     
   };
   
@@ -154,6 +161,10 @@ const InstructionsPage = () => {
   const navigateToNextPage = () => {
     navigate("/dashboard", { state: { inputData: formData } });
   };
+
+
+
+
 
   return (
     <div className="mt-36 lg:mt-24  w-screen min-h-screen font-primary flex justify-center text-white items-center">

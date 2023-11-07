@@ -23,26 +23,26 @@ const Navbar = () => {
   }
 
   return (
-    <header className='bg-black border-b shadow-2xl shadow-black text-white border-slate-800  z-20 py-4 fixed top-0 left-0 px-4 md:px-8 w-screen  flex items-center justify-between md:justify-around'>
+    <header className='shadow-xl bg-white   text-black border-slate-800  z-20 py-4 fixed top-0 left-0 px-4 md:px-8 w-screen  flex items-center justify-between md:justify-around'>
       <h1 >
         <a href='/'><img src="./assets/LOGO-text.png" alt="logo" /></a>
       </h1>
 
       <ul className='hidden md:flex md:items-center h-full '>
-            <li key='home' className=' text-base font-medium text-zinc-300 font-primary px-4 h-full  transition-all duration-300   py-2 hover:text-amber-500'>
+            <li key='home' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300   py-2 hover:text-orange-600'>
             <NavLink  to='/' >Home</NavLink>
             </li>
-            <li key='search' className=' text-base font-medium text-zinc-300 font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-amber-500'>
+            <li key='search' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-orange-600'>
             <NavLink  to='/search'>Search Dish</NavLink>
             </li>
-            <li key='dashboard' onClick={handleDashboardClick} className=' text-base font-medium text-zinc-300 font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-amber-500'>
+            <li key='dashboard' onClick={handleDashboardClick} className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-orange-600'>
             <NavLink  to='/dashboard'>Create Dish</NavLink>
             </li>
             
-            <li key='history' className=' text-base font-medium text-zinc-300 font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-amber-500'>
+            <li key='history' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-orange-600'>
             <NavLink  to='/history'>History</NavLink>
             </li>
-            <li key='contact' className=' text-base font-medium text-zinc-300 font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-amber-500'>
+            <li key='contact' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-orange-600'>
             <NavLink  to='/contact'>Contact</NavLink>
             </li>
             
@@ -51,19 +51,19 @@ const Navbar = () => {
            <div className='hidden md:flex md:items-center  h-full'>
             {! user && <div>
             <button className='  '>
-            <Link className='text-lg text-white font-primary px-4 h-full  transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-2 ' to='/login'>Login</Link>
+            <Link className='text-lg  font-primary px-4 h-full  transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-2 ' to='/login'>Login</Link>
             </button>
             <button className='px-2'>
-            <Link className='text-lg text-white font-primary px-4 h-full  transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-2 ' to='/signup'>Signup</Link>
+            <Link className='text-lg  font-primary px-4 h-full  transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-2 ' to='/signup'>Signup</Link>
             </button>
             </div>}
 
             {user && <div className='hidden md:flex md:items-center  h-full border-r-2 mx-4'>
-             <button className='text-lg text-white font-primary px-4 h-full  py-1 '>{user.first_name}</button> 
+             <button className='text-lg  font-primary px-4 h-full  py-1 '>{user.first_name}</button> 
             </div>}
 
             {user && <div className='hidden md:flex md:items-center  h-full'>
-             <button onClick={handleLogout} className='text-lg text-white font-primary px-4 h-full  transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-1 '>Logout</button> 
+             <button onClick={handleLogout} className='text-lg  font-primary px-4 h-full  transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-1 '>Logout</button> 
             </div>}
 
             

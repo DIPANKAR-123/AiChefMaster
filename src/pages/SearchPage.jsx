@@ -65,10 +65,10 @@ const SearchPage = () => {
     
 
   return (
-    <div className="mt-20 font-primary w-full min-h-screen flex flex-col text-white  items-center"> {/* Add 'items-center' to center horizontally */}
+    <div className="mt-20 font-primary w-full min-h-screen flex flex-col text-black  items-center"> {/* Add 'items-center' to center horizontally */}
     <form onSubmit={handleFormSubmit} className="py-8 w-full flex text-center flex-col justify-center items-center">
-        <p className=' text-2xl lg:text-4xl font-semibold py-8 text-zinc-200'>AiChefMaster Search </p>
-        <p className='w-[90%] lg:w-1/2 italic text-sm text-zinc-300 font-medium pb-8'>*Prior to adding a new dish, we kindly request that you perform a quick search to ensure it doesn't already exist in our database.</p>
+        <p className=' text-2xl lg:text-4xl font-semibold py-8 text-black'>AiChefMaster Search </p>
+        <p className='w-[90%] lg:w-1/2 italic text-sm text-zinc-800 font-medium pb-8'>*Prior to adding a new dish, we kindly request that you perform a quick search to ensure it doesn't already exist in our database.</p>
       <input
         type="text"
         name="dish_search"
@@ -76,7 +76,7 @@ const SearchPage = () => {
         value={query}
         onChange={handleInputChange}
         placeholder="Search for a dish..."
-        className="w-[90%] lg:w-1/2 border px-4 py-2 text-white text-lg bg-black border-slate-500 rounded-full placeholder-italic outline-none focus:border-orange-400"
+        className="w-[90%] lg:w-1/2 border px-4 py-2 text-black text-lg bg-white border-slate-700 rounded-full placeholder-italic outline-none focus:border-orange-400"
       />
         <button
         className={`${isLoading ? 'cursor-wait' : 'cursor-pointer'} text-white py-2 border bg-zinc-900 hover-bg-zinc-950 border-zinc-600 my-4 rounded-md flex px-4 items-center gap-2`}
@@ -89,8 +89,8 @@ const SearchPage = () => {
       
     
     {/* RESULTS CARDS */}
-    {message && <Message message={message} color="bg-[#0f83053e]" border="border border-emerald-600"/>}
-    {errormsg && <Message message={errormsg} color="bg-[#cd1d1d2c]" border="border border-rose-600"/>}
+    {message && <Message message={message} color="bg-[#0f83059e]" border="border border-emerald-600"/>}
+    {errormsg && <Message message={errormsg} color="bg-[#cd1d1d9c]" border="border border-rose-600"/>}
     
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-8 xl:grid-cols-4 gap-8'>
     {resultDishes.length > 0 ? (

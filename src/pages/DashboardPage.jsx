@@ -71,7 +71,7 @@ const navigateToNextPage = () => {
     <div className="w-screen h-full mt-36  overflow-x-hidden font-primary flex flex-col justify-center items-center">
       {/* heading  */}
       <div className="flex items-center justify-center gap-3">
-        <p className="text-white font-semibold text-4xl">Welcome Chef </p>
+        <p className=" font-semibold text-4xl">Welcome Chef </p>
         <p className="text-[#FF8A00] text-3xl ">
           <LuChefHat />
         </p>
@@ -79,7 +79,7 @@ const navigateToNextPage = () => {
 
       {/* underline  */}
       <div className="w-full  flex items-center justify-center">
-        <div className="h-1 w-72 flex-shrink-0 bg-gradient-to-r from-[#FF8A00] to-[#000]"></div>
+        <div className="h-1 w-72 flex-shrink-0 bg-gradient-to-r from-[#FF8A00] to-[#f8f8f8]"></div>
       </div>
 
 
