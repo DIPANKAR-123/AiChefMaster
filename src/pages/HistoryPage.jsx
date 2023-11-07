@@ -79,7 +79,7 @@ const History = () => {
       <div className='flex items-center gap-3 text-2xl'><AiOutlineMail/><div className='flex gap-1 items-center text-xl font-medium'><p>{userData.email}</p></div></div>
       </div>
       <div className='py-8 text-center flex gap-4 flex-col  items-center'>
-      <p className='text-3xl font-semibold flex text-orange-500 items-center gap-4'><AiOutlineHistory/>History</p>
+      <p className='text-3xl font-semibold flex text-green-600 items-center gap-4'><AiOutlineHistory/>History</p>
       <p className='text-xl trxt-center font-medium border-b border-black '>List of dishes created by you</p>
       </div>
        {/* Filter select input */}

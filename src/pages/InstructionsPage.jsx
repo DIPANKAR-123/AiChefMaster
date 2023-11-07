@@ -98,7 +98,7 @@ const InstructionsPage = () => {
     
     const backPage=()=>{
       setTimeout(() => {
-        navigate('/dashboard')
+        navigate('/history')
       }, 2000);
     
     }
@@ -173,7 +173,7 @@ const InstructionsPage = () => {
         <div className=" items-center relative backdrop-filter backdrop-blur-xl rounded-lg">
           <div className="flex flex-col p-1 md:p-2 lg:p-4 w-full">
             <p  className=" text-3xl text-center flex justify-center items-center gap-2 font-medium py-4">
-              Ingredients <IoIosPie/>
+              Ingredients <IoIosPie className="text-green-600"/>
             </p>
             <p className="text-center text-sm italic font-semibold text-zinc-700">* Enter quantity for 1 portion</p>
             <div className="bg-transparent rounded-xl p-4 lg:p-8 py-4 flex flex-col justify-center items-center">
@@ -182,7 +182,7 @@ const InstructionsPage = () => {
                   {formData.ingredients.length>0 && formData.ingredients.map((ingredient, index) => (
                     <li
                       key={index}
-                      className="bg-amber-600 font-medium flex rounded-md items-center gap-2 px-2 py-1"
+                      className="bg-amber-300 font-medium flex rounded-md items-center gap-2 px-2 py-1"
                     >
                       <span>
                         {ingredient.name} - {ingredient.quantity}
@@ -196,7 +196,7 @@ const InstructionsPage = () => {
                 </ul>
                 <div className="flex flex-col lg:flex-row gap-0 lg:gap-4">
                   <div className="w-full lg:w-1/2 pt-4">
-                    <label className=" block">Name</label>
+                    <label className=" block text-black">Name</label>
                     <input
                       type="text"
                       name="ingredient_name"
@@ -214,16 +214,32 @@ const InstructionsPage = () => {
                       name="ingredient_quantity"
                       value={ingredientQuantity}
                       onChange={(e) => setIngredientQuantity(e.target.value)}
-                      placeholder="eg. 200gm"
-                      className="px-2 my-2 py-1 text-black text-lg w-full border border-zinc-700  rounded-md placeholder:italic outline-none"
+                      placeholder="eg. 200"
+                      className="px-2 my-2 py-1 text-black text-lg w-full border border-black  rounded-md placeholder:italic focus:border-orange-400 outline-none"
                     />
+                  </div>
+                  <div className="w-full lg:w-1/2 pt-4">
+                    <label className=" block">Unit</label>
+                    <select
+                      type="number"
+                      name="ingredient_quantity"
+                      value={ingredientQuantity}
+                      onChange={(e) => setIngredientQuantity(e.target.value)}
+                      
+                      className="px-2 my-2 py-1 text-black text-lg w-full border border-zinc-700  rounded-md focus:border-orange-400 placeholder:italic outline-none"
+                    >
+                      <option value="">Select Course Type</option>
+                      <option value="gram">gram</option>
+                      <option value="mL">mL</option>
+                      <option value="teaspoon">teaspoon</option>
+                    </select>
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-center">
                   <button
                   onClick={handleIngredientSubmit}
                     type="submit"
-                    className="text-white border border-zinc-600 bg-zinc-900 p-2 px-6 my-4 rounded-xl hover:bg-zinc-950 "
+                    className="text-white border  bg-zinc-700 p-2 px-6 my-4 rounded-xl hover:bg-zinc-950 "
                   >
                     Submit
                   </button>
@@ -234,7 +250,7 @@ const InstructionsPage = () => {
 
           {/* Instructions */}
           
-            <p className=" text-3xl text-center py-4  flex items-center justify-center gap-2 font-medium">Instructions <IoIosPaper/></p>
+            <p className=" text-3xl text-center py-4  flex items-center justify-center gap-2 font-medium">Instructions <IoIosPaper className="text-green-600"/></p>
           
 
           <div className="p-1 lg:p-8 ">
@@ -247,26 +263,37 @@ const InstructionsPage = () => {
                   </span>
                   <p className="flex max-w-full break-all">{instruction.step}</p>
                   <button onClick={() => removeInstruction(index)} className=" mx-2">
-                    <IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-[#361316] text-3xl" />
+                    <IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-rose-200 text-3xl" />
                   </button>
                 </div>
               </div>
             </div>
             ))}
             <div className="flex full pt-3 px-4 ">
-              <div className="items center w-full lg-w-3/4">
-                <label className="text-white font-medium text-md">Enter a new Step</label>
-                <div className="flex flex-row pt-2 justify-center items-center">
+              <div className="items center w-full ">
+               
+                
+                <div className="flex flex-col lg:flex-row gap-4 pt-2  items-center">
+                <div className="w-full">
+                <label className=" font-medium text-md">Enter a new Step</label>
                 <textarea
-                  type="textarea"
+                  type="text"
                   name="new_instruction"
                   value={newInstruction}
                   onChange={(e) => setNewInstruction(e.target.value)}
                   placeholder={`Enter a new step`}
-                  className="border border-black w-full px-4 py-1  text-black text-lg  rounded-md placeholder:italic placeholder-text-sm outline-none focus-border-orange-400"
+                  className="border border-black w-full px-4 py-4 focus:border-orange-400  text-lg  rounded-md placeholder:italic placeholder-text-sm outline-none focus-border-orange-400"
                 />
-                <button onClick={addInstruction} type="button" className="px-4 ">
-                      <IoIosAdd className="text-green-500 text-3xl rounded-full border border-green-600 hover:bg-[#133615]" />
+                </div>
+                <div className="flex flex-col">
+                <label className="text-black font-medium text-md">Enter Time </label>
+                <input
+                 type="number"
+                 className="border w-full  px-2 py-4 text-lg  focus:border-orange-400 border-black rounded-md placeholder:text-gray-400 outline-none placeholder:italic " />
+                 </div>
+
+                <button onClick={addInstruction} type="button" className=" ">
+                      <IoIosAdd className="text-green-500 text-3xl rounded-full border border-green-600 hover:bg-green-200" />
                 </button>
                 </div>
               </div>
@@ -280,18 +307,15 @@ const InstructionsPage = () => {
             <button
             type="button"
                   onClick={btnHandler}
-                  className="bg-zinc-950 hover:bg-zinc-800 px-4 py-3 overflow-hidden font-medium rounded-xl  text-xl md:text-2xl shadow-2xl  "
-                >
-                  
-                  <span className="text-white">Overview</span>
+                  className="bg-blue-800 hover:bg-blue-900 px-4 py-3 overflow-hidden font-medium rounded-xl  text-xl   "
+                ><span className="text-white">Overview</span>
                 </button>
 
               <button
               type="button"
                 onClick={navigateToNextPage}
-                className="bg-zinc-950 hover:bg-zinc-800 group relative px-4 py-3 overflow-hidden font-medium rounded-xl  text-xl md-text-2xl shadow-2xl  "
+                className="bg-zinc-800 hover:bg-zinc-900 group relative px-4 py-3 overflow-hidden font-medium rounded-xl  text-xl   "
               >
-    
                 <span className="text-white">Back</span>
               </button>
 
@@ -302,7 +326,7 @@ const InstructionsPage = () => {
               onClick={submitHandler}
               className={`${
                 isLoading ? 'cursor-wait' : 'cursor-pointer'
-              } bg-zinc-950 hover:bg-zinc-800 px-4 py-3 overflow-hidden font-medium rounded-xl   text-xl md:text-2xl shadow-2xl  `}
+              } bg-green-600 hover:bg-green-800 px-4 py-3 overflow-hidden font-medium rounded-xl   text-xl md:text-2xl shadow-2xl  `}
             >
               
               <span className="text-white">Submit</span>

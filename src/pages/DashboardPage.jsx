@@ -72,14 +72,14 @@ const navigateToNextPage = () => {
       {/* heading  */}
       <div className="flex items-center justify-center gap-3">
         <p className=" font-semibold text-4xl">Welcome Chef </p>
-        <p className="text-[#FF8A00] text-3xl ">
+        <p className="text-green-600 text-3xl ">
           <LuChefHat />
         </p>
       </div>
 
       {/* underline  */}
       <div className="w-full  flex items-center justify-center">
-        <div className="h-1 w-72 flex-shrink-0 bg-gradient-to-r from-[#FF8A00] to-[#f8f8f8]"></div>
+        <div className="h-1 w-72 flex-shrink-0 bg-gradient-to-r from-green-600 to-[#f8f8f8]"></div>
       </div>
 
 

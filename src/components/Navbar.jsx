@@ -30,20 +30,20 @@ const Navbar = () => {
       </h1>
 
       <ul className='hidden md:flex md:items-center h-full '>
-            <li key='home' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300   py-2 hover:text-orange-600'>
+            <li key='home' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300   py-2 hover:text-green-600'>
             <NavLink  to='/' >Home</NavLink>
             </li>
-            <li key='search' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-orange-600'>
+            <li key='search' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-green-600'>
             <NavLink  to='/search'>Search Dish</NavLink>
             </li>
-            <li key='dashboard' onClick={handleDashboardClick} className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-orange-600'>
+            <li key='dashboard' onClick={handleDashboardClick} className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-green-600'>
             <NavLink  to='/dashboard'>Create Dish</NavLink>
             </li>
             
-            <li key='history' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-orange-600'>
+            <li key='history' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-green-600'>
             <NavLink  to='/history'>My Account</NavLink>
             </li>
-            <li key='contact' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-orange-600'>
+            <li key='contact' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-green-600'>
             <NavLink  to='/contact'>Contact</NavLink>
             </li>
             

@@ -79,7 +79,7 @@ const SearchPage = () => {
         className="w-[90%] lg:w-1/2 border px-4 py-2 text-black text-lg bg-white border-slate-700 rounded-full placeholder-italic outline-none focus:border-orange-400"
       />
         <button
-        className={`${isLoading ? 'cursor-wait' : 'cursor-pointer'} text-white py-2 border bg-zinc-900 hover-bg-zinc-950 border-zinc-600 my-4 rounded-md flex px-4 items-center gap-2`}
+        className={`${isLoading ? 'cursor-wait' : 'cursor-pointer'} text-white py-2 border bg-green-600 hover:bg-green-800  my-4 rounded-md flex px-4 items-center gap-2`}
         >
         Search <AiOutlineSearch />
         </button>

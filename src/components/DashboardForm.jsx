@@ -143,7 +143,7 @@ const navigateToNextPage = () => {
               </div>
 
               <div className="flex flex-col pt-4">
-  <label htmlFor="course_type" className="text-white text-md font-medium pb-2">
+  <label htmlFor="course_type" className=" text-md font-medium pb-2">
     Course Type
   </label>
 
@@ -170,7 +170,7 @@ const navigateToNextPage = () => {
               <div className="flex flex-col pt-4">
                 <label
                   htmlFor=""
-                  className="text-white text-md font-medium pb-2"
+                  className=" text-md font-medium pb-2"
                 >
                   Cooking Time
                 </label>
@@ -198,7 +198,7 @@ const navigateToNextPage = () => {
     <div className="flex items-center justify-center mt-10">
           <button
                 onClick={navigateToNextPage}
-                className="  bg-zinc-950 hover:bg-zinc-800 px-8 py-3 overflow-hidden font-medium rounded-xl border  text-xl md:text-2xl  "
+                className="  bg-green-600 hover:bg-green-800 px-8 py-3 overflow-hidden font-medium rounded-xl border  text-xl md:text-2xl  "
               >
                 
                 <span className=" text-white" >Next</span>
