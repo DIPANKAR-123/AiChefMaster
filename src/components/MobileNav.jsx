@@ -33,7 +33,7 @@ const MobileNav = () => {
        
   return (
     <nav className=' md:hidden'>
-        <div onClick={()=>setOpenMenu(true)} className={'text-white text-3xl cursor-pointer'}>
+        <div onClick={()=>setOpenMenu(true)} className={'text-black text-3xl cursor-pointer'}>
            <CgMenuRight/>
         </div>
 
@@ -42,11 +42,11 @@ const MobileNav = () => {
         variants={menuVariants}
         initial='hidden'
         animate={openMenu ? 'show': ''}
-        className='bg-gradient-to-r from-zinc-950 to-black shadow w-full absolute
-        top-0 right-0 max-w-xs h-screen z-20 text-white rounded-l-xl '>
+        className='bg-white shadow w-full absolute
+        top-0 right-0 max-w-xs h-screen z-20 text-black rounded-l-xl '>
             
             <div onClick={()=>{setOpenMenu(false)}} className='text-4xl absolute z-30 left-4 top-14
-             cursor-pointer text-white'><IoMdClose/></div>
+             cursor-pointer text-black'><IoMdClose/></div>
             {/* menu list */}
             <ul className='h-full flex flex-col justify-center
             items-center gap-y-6  font-primary first-letter:first
