@@ -75,7 +75,7 @@ const History = () => {
     <div className='min-h-screen w-screen flex flex-col mt-32 items-center font-primary text-black'>
       
       <div className='bg-white p-6 rounded-xl shadow-xl'>
-      <div className='flex flex-col items-center gap-1 text-2xl'><MdAccountCircle size={100}/><div className='flex gap-1 items-center text-xl font-medium'><p>{userData.first_name}</p><p>{userData.last_name}</p></div></div>
+      <div className='flex flex-col items-center gap-1 text-2xl'><MdAccountCircle className='text-zinc-600' size={100}/><div className='flex gap-1 items-center text-xl font-medium'><p>{userData.first_name}</p><p>{userData.last_name}</p></div></div>
       <div className='flex items-center gap-3 text-2xl'><AiOutlineMail/><div className='flex gap-1 items-center text-xl font-medium'><p>{userData.email}</p></div></div>
       </div>
       <div className='py-8 text-center flex gap-4 flex-col  items-center'>
