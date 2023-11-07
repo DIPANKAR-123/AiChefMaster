@@ -10,19 +10,20 @@ const HomePage = () => {
   return (
     <div className=' min-h-screen py-20 text-black flex flex-col-reverse lg:flex-row md:gap-16 md:items-center justify-center font-primary px-8'>
       
-      <div className='left-section relative w-full md:w-1/2'>
+      <div className='left-section relative w-full text-center md:w-1/2'>
       <div className='w-[300px] h-[300px] z-1 rounded-full absolute top-[-40px] left-[-40px] blur-3xl  bg-[#8bfb451c]  '></div>
       <h2 className='font-bold relative text-2xl md:text-4xl lg:text-5xl z-10 py-8'><p className='text-green-600 inline pr-2'>Welcome</p> 
       to AiChefMaster <p>Dashboard </p> </h2>
       
       <p className='description text-lg md:text-xl font-medium text-zinc-900  pb-8 relative'>Bring your signature dishes to life on our platform. Every recipe, every ingredient, and every cooking technique you provide adds a unique flavor to our growing culinary library.</p>
-
+      {!user &&
       <Link to='/signup'>
       <button className="bg-green-600 hover:bg-green-700 group  relative px-8 py-3 overflow-hidden font-medium rounded-xl border  text-xl md:text-2xl shadow-2xl  mr-8 my-8">
       
       <span className=" text-white">Get Started</span>
       </button>
       </Link>
+}
       
       {user && (
       <Link to='/dashboard'>
@@ -32,9 +33,9 @@ const HomePage = () => {
       </div>
       
 
-      <div>
+      {/* <div>
         <img className=' md:flex w-[300px] md:w-[500px] h-auto ' src="./assets/LOGO.png" alt="Logo" />
-      </div>
+      </div> */}
       
     </div>
   )
