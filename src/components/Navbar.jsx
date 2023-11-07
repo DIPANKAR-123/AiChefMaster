@@ -41,7 +41,7 @@ const Navbar = () => {
             </li>
             
             <li key='history' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-orange-600'>
-            <NavLink  to='/history'>History</NavLink>
+            <NavLink  to='/history'>My Account</NavLink>
             </li>
             <li key='contact' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-orange-600'>
             <NavLink  to='/contact'>Contact</NavLink>

@@ -109,7 +109,7 @@ const History = () => {
                   <p className='font-medium'>{dish.cuisine}</p>
                   </div>
                   <button onClick={()=>handleClick(dish.id)} className={`${
-                  isLoading ? 'cursor-wait' : 'cursor-pointer'} text-left font-semibold text-slate-500 flex items-center gap-2 `}><p>see more</p> <BsFillArrowUpRightSquareFill/></button>
+                  isLoading ? 'cursor-wait' : 'cursor-pointer'} text-left font-semibold text-zinc-500 flex items-center gap-2 `}><p>see more</p> <BsFillArrowUpRightSquareFill/></button>
                 </div>
                 
                 <div className='flex'>
@@ -122,12 +122,12 @@ const History = () => {
           return null; // Hide dishes that don't match the filter
         }):(
           
-            <div className='flex flex-col min-w-screen  justify-center items-center'><CircularProgress color="inherit" className='w-[300px]' /></div>
+            <div className='flex flex-col w-screen  justify-center items-center'><CircularProgress color="inherit"  /></div>
           
         )}
          
          <div className={'popup-media transition-all  w-full max-auto justify-center ' } style={{display: open?'flex':'none'}}>
-            <span onClick={(prev)=>setOpen(!prev)} className='absolute cursor-pointer right-0 p-8'><IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-[#36131681] text-3xl" /></span>
+            <span onClick={(prev)=>setOpen(!prev)} className='absolute cursor-pointer right-0 p-8'><IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-rose-200 text-3xl" /></span>
             {open && <Overview form={dishView} color={'text-black'}/>}
         </div> 
         

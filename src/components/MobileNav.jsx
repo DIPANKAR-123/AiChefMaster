@@ -55,13 +55,13 @@ const MobileNav = () => {
             <NavLink  to='/'>Home</NavLink>
             </li>
             <li key='search' className=' text-base  pb-1  transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
-            <NavLink  to='/search'>Search</NavLink>
+            <NavLink  to='/search'>Search Dish</NavLink>
             </li>
             <li key='dashboard' className=' text-base  pb-1   transition-all duration-300    hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
             <NavLink  to='/dashboard'>Dashboard</NavLink>
             </li>
             <li key='history' className=' text-base  pb-1   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
-            <NavLink  to='/history'>History</NavLink>
+            <NavLink  to='/history'>My Account</NavLink>
             </li>
             <li key='contact' className=' text-base  pb-1   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
             <NavLink  to='/contact'>Contact</NavLink>

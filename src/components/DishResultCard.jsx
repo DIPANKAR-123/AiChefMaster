@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import {  IoIosClose, } from "react-icons/io";
 import Overview from './Overview';
-
+import {  BsFillArrowUpRightSquareFill } from "react-icons/bs";
 const DishResultCard = ({dish}) => {
     const [open, setOpen] = useState(false);
     const [dishView, setDishView] = useState({});
@@ -27,11 +27,11 @@ const DishResultCard = ({dish}) => {
     {dish.veg_non_veg === "vegetarian" ? <p className='rounded-xl bg-[#0f83059e] text-white my-1 text-center w-1/2 border p-0.5 border-emerald-500'>{dish.veg_non_veg}</p> : <p className='rounded-xl bg-[#cd1d1d9c] p-0.5 text-center w-1/2 border my-1 text-white border-rose-500'>{dish.veg_non_veg}</p>}
     </div>
 
-    <button onClick={showDish} className='text-base font-semibold text-zinc-700    '>See more</button>
+    <button onClick={showDish} className='text-base font-semibold text-zinc-700 flex items-center gap-2  '>See more <BsFillArrowUpRightSquareFill/></button>
    
     <div className={'popup-media transition-all min-h-screen  w-full max-auto justify-center ' } style={{display: open?'flex':'none'}}>
-            <span onClick={(prev)=>setOpen(!prev)} className='absolute cursor-pointer right-0 p-8'><IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-[#361316] text-3xl" /></span>
-            {open && <Overview form={dishView} color={'text-white'}/>}
+            <span onClick={(prev)=>setOpen(!prev)} className='absolute cursor-pointer right-0 p-8'><IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-rose-200 text-3xl" /></span>
+            {open && <Overview form={dishView} color={'text-black'}/>}
     </div>
     
   </div>

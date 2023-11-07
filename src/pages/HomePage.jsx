@@ -7,7 +7,7 @@ const HomePage = () => {
     <div className=' min-h-screen py-20 text-black flex flex-col-reverse lg:flex-row md:gap-16 md:items-center justify-center font-primary px-8'>
       
       <div className='left-section relative w-full md:w-1/2'>
-      <div className='w-[300px] h-[300px] z-1 rounded-full absolute top-[-40px] left-[-40px] blur-3xl  bg-[#459afb1c]  '></div>
+      <div className='w-[300px] h-[300px] z-1 rounded-full absolute top-[-40px] left-[-40px] blur-3xl  bg-[#fb51451c]  '></div>
       <h2 className='font-bold relative text-2xl md:text-4xl lg:text-5xl z-10 py-8'><p className='text-orange-500 inline pr-2'>Welcome</p> 
       to AiChefMaster <p>Dashboard </p> </h2>
       

@@ -315,7 +315,7 @@ const InstructionsPage = () => {
             <div className="flex justify-end">
               <AiOutlineClose
                 onClick={btnHandler}
-                className="cursor-pointer text-3xl text-rose-600 border border-rose-500 p-1  hover:bg-[#361316] rounded-full"
+                className="cursor-pointer text-3xl text-rose-600 border border-rose-500 p-1  hover:bg-rose-200 rounded-full"
               />
             </div>
             <Overview form={formData} color={'text-black'} />
