@@ -46,7 +46,7 @@ const ContactPage = () => {
         setMessage('')
         setName('')
         toast.success(json.message, {
-          theme: 'dark',
+          theme: 'light',
           position: 'bottom-right',
         });
       }
@@ -75,7 +75,7 @@ const ContactPage = () => {
       <div className='w-full md:w-1/2'>
       <form
       onSubmit={handleSubmit}
-       className='signup  flex flex-col  justify-center  items-center text-white font-primary w-full ' >
+       className='signup  flex flex-col  justify-center  items-center text-black  font-primary w-full ' >
       
       
       
@@ -117,7 +117,7 @@ const ContactPage = () => {
         <label>Message</label>
         <textarea type="textarea"
         name="message"
-        className='block min-w-full  min-h-[200px] py-2  placeholder:italic px-4 my-2 border border-zinc-600 rounded-lg bg-'
+        className='block min-w-full  min-h-[200px] py-2 text-black placeholder:italic px-4 my-2 border border-zinc-600 rounded-lg bg-'
         placeholder='Type your message...'
         onChange={(e)=>setMessage(e.target.value)} 
         value={message}

@@ -326,7 +326,7 @@ const InstructionsPage = () => {
               onClick={submitHandler}
               className={`${
                 isLoading ? 'cursor-wait' : 'cursor-pointer'
-              } bg-green-600 hover:bg-green-800 px-4 py-3 overflow-hidden font-medium rounded-xl   text-xl md:text-2xl shadow-2xl  `}
+              } bg-green-600 hover:bg-green-800 px-4 py-3 overflow-hidden font-medium rounded-xl   text-xl  `}
             >
               
               <span className="text-white">Submit</span>
