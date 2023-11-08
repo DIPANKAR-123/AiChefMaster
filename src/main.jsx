@@ -6,9 +6,11 @@ import { AuthContextProvider } from './context/AuthContext.jsx'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthContextProvider>
+     
     <App />
     <ToastContainer />
     

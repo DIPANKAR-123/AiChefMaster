@@ -82,13 +82,21 @@ const InstructionsPage = () => {
         console.log("Dish created successfully:", responseData);
         toast.success("Dish Created");
         localStorage.removeItem("formData");
-         setFormData(successInitialFormData)
+        setFormData(successInitialFormData)
+        const backPage=()=>{
+          setTimeout(() => {
+            navigate('/history')
+          }, 2000);
+        
+        }
+    
+        backPage()
       } else {
         setisLoading(false)
         const errorData = await response.json();
         console.error("Error creating dish:", response.statusText);
         toast.error(errorData.message || "Something went wrong");
-        console.log(formData)
+        console.log("DISH:",formData)
       }
     } catch (error) {
       setisLoading(false)
@@ -96,14 +104,7 @@ const InstructionsPage = () => {
       toast.error("Something went wrong");
     }
     
-    const backPage=()=>{
-      setTimeout(() => {
-        navigate('/history')
-      }, 2000);
-    
-    }
-
-    backPage()
+   
     
   };
   
