@@ -69,7 +69,7 @@ const navigateToNextPage = () => {
           <div className="bg-gradient-to-b  relative backdrop-filter backdrop-blur-xl rounded-lg items-center">
           {/* <div className='w-[400px] h-[400px]  rounded-full absolute top-[-40px] left-[-40px] blur-3xl z-[-10] bg-[#14318629]  '></div>  */}
             <div className="grid grid-cols-1 lg:grid-cols-2 p-4 lg:p-16 gap-8">
-
+              
               <div className="flex flex-col pt-4">
                 <label
                   htmlFor=""
@@ -105,6 +105,23 @@ const navigateToNextPage = () => {
                 </select>
                 </div>
 
+                <div className="flex flex-col pt-4">
+                <label
+                  htmlFor=""
+                  className=" text-md font-medium pb-2"
+                >
+                  Dish Description
+                </label>
+
+                <input
+                  type="textarea"
+                  name="name"
+                  placeholder="eg Biryani is Indian dish..."
+                  
+                  
+                  className="border px-2 py-1  text-lg w-full border-black rounded-md placeholder:italic outline-none focus:border-orange-400"
+                />
+              </div>
 
               <div className="flex flex-col pt-4">
                 <label
@@ -167,7 +184,7 @@ const navigateToNextPage = () => {
 </div>
 
 
-              <div className="flex flex-col pt-4">
+              {/* <div className="flex flex-col pt-4">
                 <label
                   htmlFor=""
                   className=" text-md font-medium pb-2"
@@ -183,7 +200,7 @@ const navigateToNextPage = () => {
                   value={form.cooking_time}
                   className="border py-1 px-2 placeholder:italic  text-lg  border-black rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
                 />
-              </div>
+              </div> */}
 
               
 
