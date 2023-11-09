@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-
+import { IoIosAdd, IoIosClose } from "react-icons/io";
 
 const DashboardForm = () => {
-    const {user} = useAuthContext()
+  const [courseName, setCourseName] = useState("");
+  const [courses, setCourses]=useState([])
+ 
+  const {user} = useAuthContext()
   const initialFormState = JSON.parse(localStorage.getItem("formData")) || {
     chef:"",
     dish_picture: null,
@@ -12,27 +15,55 @@ const DashboardForm = () => {
     veg_non_veg: "vegetarian", 
     popularity_state: "",
     cuisine: "", 
-    course_type: "", 
     cooking_time: "",
     ingredients: [],
     instructions: [],
-    
+    courses:[],
+    description:"",
+    kitchen_equipments:"",
   };
   const [form, setForm] = useState(initialFormState);
 
   useEffect(() => {
     if (user && user.account_id) {
-      const updatedFormData = { ...form, chef: user.account_id };
+      const updatedFormData = { ...form, chef: user.account_id, courses: form.courses || [] };
       localStorage.setItem("formData", JSON.stringify(updatedFormData));
     }
   }, [form]);
+  
 
 
   const saveFormDataToLocalStorage = (form) => {
     localStorage.setItem("formData", JSON.stringify(form));
   };
 
- 
+ const inputHandlerCourse = (e) =>{
+   const selectedValue = e.target.value;
+  setCourseName(selectedValue === "" ? [] : selectedValue);
+
+  // Use the updated value of courseName in the state update
+  setCourses((prevCourses) => [...prevCourses, selectedValue]);
+  const updatedForm = {
+    ...form,
+    courses:[...form.courses, selectedValue],
+
+  }
+  setForm(updatedForm)
+  saveFormDataToLocalStorage(updatedForm);
+ }
+
+
+ const removeCourse = (name) => {
+  const updatedCourses = form.courses.filter(
+    (course) => course!== name
+  );
+  setForm((prevData) => ({
+    ...prevData,
+    courses: updatedCourses,
+  }));
+  console.log('After update:', form.courses);
+};
+
 
   const inputHandler = (e) => {
     const { name, value } = e.target;
@@ -44,7 +75,7 @@ const DashboardForm = () => {
     saveFormDataToLocalStorage(updatedForm);
   };
 
-  
+ 
 
   
 const navigate = useNavigate();
@@ -54,7 +85,7 @@ const navigateToNextPage = () => {
 };
 
   return (
-    <div className="pt-16 w-[90%] lg:w-1/2">
+    <div className="pt-16 w-[90%] lg:w-[60%]">
     <div className=" py-6 text-center">
       <p className=" text-3xl font-medium ">
         Enter details of a new dish
@@ -68,7 +99,7 @@ const navigateToNextPage = () => {
         <div className="bg-white p-0.5 w-full  rounded-lg shadow-xl">
           <div className="bg-gradient-to-b  relative backdrop-filter backdrop-blur-xl rounded-lg items-center">
           {/* <div className='w-[400px] h-[400px]  rounded-full absolute top-[-40px] left-[-40px] blur-3xl z-[-10] bg-[#14318629]  '></div>  */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 p-4 lg:p-16 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 p-4 lg:px-16 gap-8">
               
               <div className="flex flex-col pt-4">
                 <label
@@ -115,9 +146,10 @@ const navigateToNextPage = () => {
 
                 <input
                   type="textarea"
-                  name="name"
+                  name="description"
                   placeholder="eg Biryani is Indian dish..."
-                  
+                  onChange={inputHandler}
+                  value={form.description}
                   
                   className="border px-2 py-1  text-lg w-full border-black rounded-md placeholder:italic outline-none focus:border-orange-400"
                 />
@@ -159,15 +191,49 @@ const navigateToNextPage = () => {
               />
               </div>
 
+              
+
+
+              
               <div className="flex flex-col pt-4">
+              <label className=" text-md font-medium pb-2">Kitchen Equipments</label>
+              <input 
+              name="kitchen_equipment" 
+              value={form.kitchen_equipment}
+              onChange={inputHandler}
+              placeholder="eg. Oven, Pan, Spatula"
+              className="border px-2 py-1 placeholder:italic  text-lg  border-black rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
+              >
+              </input>
+              </div>
+             
+            </div>
+            <div className="pt-4 flex flex-col px-4 lg:px-16 pb-8">
+            <ul className="flex flex-wrap gap-4 my-2 w-full">
+                      {form.courses && form.courses.map((course, index) => {
+            return (
+              <li
+                key={index}
+                className="bg-amber-300 font-medium flex flex-row rounded-md items-center gap-2 px-2 py-1"
+              >
+                <span>{course}</span>
+                <IoIosClose
+                  onClick={() => removeCourse(course)}
+                  className="text-xl cursor-pointer  border  border-black hover:bg-amber-800 rounded-full"
+                />
+              </li>
+            );
+          })}
+            </ul>
+            <div className="flex flex-col">
   <label htmlFor="course_type" className=" text-md font-medium pb-2">
     Course Type
   </label>
 
   <select
     name="course_type"
-    onChange={inputHandler}
-    value={form.course_type}
+    onChange={inputHandlerCourse}
+    value={courseName}
     className="border p-2 placeholder:italic  text-lg  border-black rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
   >
     <option value="">Select Course Type</option>
@@ -181,31 +247,8 @@ const navigateToNextPage = () => {
     <option value="Brunch">Brunch</option>
     <option value="Snacks">Snacks</option>
   </select>
+  </div>
 </div>
-
-
-              {/* <div className="flex flex-col pt-4">
-                <label
-                  htmlFor=""
-                  className=" text-md font-medium pb-2"
-                >
-                  Cooking Time
-                </label>
-
-                <input
-                  type="text"
-                  name="cooking_time"
-                  placeholder="eg. 20min"
-                  onChange={inputHandler}
-                  value={form.cooking_time}
-                  className="border py-1 px-2 placeholder:italic  text-lg  border-black rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
-                />
-              </div> */}
-
-              
-
-             
-            </div>
           </div>
         </div>
         

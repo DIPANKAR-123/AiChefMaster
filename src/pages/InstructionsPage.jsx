@@ -17,25 +17,30 @@ const InstructionsPage = () => {
     
     dish_picture: null,
     name: "",
-    veg_non_veg: "vegetarian", // Changed to radio button with default value
+    veg_non_veg: "vegetarian", 
     popularity_state: "",
-    cuisine: "", // Changed to dropdown
-    course_type: "", // Changed to dropdown
+    cuisine: "", 
     cooking_time: "",
     ingredients: [],
     instructions: [],
+    courses:[],
+    description:"",
+    kitchen_equipments:"",
   };
 
   const successInitialFormData = {
     dish_picture: null,
     name: "",
-    veg_non_veg: "vegetarian", // Changed to radio button with default value
+    veg_non_veg: "vegetarian", 
     popularity_state: "",
-    cuisine: "", // Changed to dropdown
-    course_type: "", // Changed to dropdown
+    cuisine: "", 
+    course_type: [], 
     cooking_time: "",
     ingredients: [],
     instructions: [],
+    courses:[],
+    description:"",
+    kitchen_equipments:"",
   }
 
   const {user} = useAuthContext()
@@ -43,7 +48,9 @@ const InstructionsPage = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [ingredientName, setIngredientName] = useState("");
   const [ingredientQuantity, setIngredientQuantity] = useState(0);
+  const [ingredientUnit, setIngredientUnit] = useState("gram");
   const [newInstruction, setNewInstruction] = useState("");
+  const [instructionTime, setInstructionTime] = useState("");
   const [isLoading, setisLoading] = useState(false)
 
   const btnHandler = () => {
@@ -58,9 +65,6 @@ const InstructionsPage = () => {
   }, [formData]);
 
 
-  const clearFormDataFromLocalStorage = () => {
-    localStorage.removeItem("formData");
-  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -123,10 +127,11 @@ const InstructionsPage = () => {
 
   const handleIngredientSubmit = (e) => {
     e.preventDefault();
-    if (ingredientName && ingredientQuantity) {
+    if (ingredientName && ingredientQuantity && ingredientUnit) {
       const newIngredient = {
         name: ingredientName,
         quantity: ingredientQuantity,
+        unit: ingredientUnit
       };
       setFormData((prevData) => ({
         ...prevData,
@@ -134,18 +139,20 @@ const InstructionsPage = () => {
       }));
       setIngredientName("");
       setIngredientQuantity("");
+      setIngredientUnit("");
     }
   };
 
   const addInstruction = () => {
-    if (newInstruction) {
+    if (newInstruction && instructionTime) {
      
       setFormData((prevData) => ({
         ...prevData,
-        instructions: [...prevData.instructions,{ step: newInstruction, instruction_video_url: "" }
+        instructions: [...prevData.instructions,{ step: newInstruction, instruction_video_url: "", time:instructionTime }
       ],
       }));
       setNewInstruction("");
+      setInstructionTime("");
     }
   };
 
@@ -186,7 +193,7 @@ const InstructionsPage = () => {
                       className="bg-amber-300 font-medium flex rounded-md items-center gap-2 px-2 py-1"
                     >
                       <span>
-                        {ingredient.name} - {ingredient.quantity}
+                        {ingredient.name} - {ingredient.quantity} {ingredient.unit}
                       </span>
                       <IoIosClose
                         onClick={() => removeIngredient(ingredient.name)}
@@ -222,10 +229,10 @@ const InstructionsPage = () => {
                   <div className="w-full lg:w-1/2 pt-4">
                     <label className=" block">Unit</label>
                     <select
-                      type="number"
-                      name="ingredient_quantity"
-                      value={ingredientQuantity}
-                      onChange={(e) => setIngredientQuantity(e.target.value)}
+                      
+                      name="ingredient_unit"
+                      value={ingredientUnit}
+                      onChange={(e) => setIngredientUnit(e.target.value)}
                       
                       className="px-2 my-2 py-1 text-black text-lg w-full border border-zinc-700  rounded-md focus:border-orange-400 placeholder:italic outline-none"
                     >
@@ -262,7 +269,7 @@ const InstructionsPage = () => {
                   <span className=" px-4 max-w-full flex gap-2">
                     <p>Step</p> <p>{index + 1} </p>  <p> -</p>
                   </span>
-                  <p className="flex max-w-full break-all">{instruction.step}</p>
+                  <p className="flex max-w-full break-all">{instruction.step} ({instruction.time})</p>
                   <button onClick={() => removeInstruction(index)} className=" mx-2">
                     <IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-rose-200 text-3xl" />
                   </button>
@@ -289,7 +296,9 @@ const InstructionsPage = () => {
                 <div className="flex flex-col">
                 <label className="text-black font-medium text-md">Enter Time </label>
                 <input
-                 type="number"
+                value={instructionTime}
+                onChange={(e)=>setInstructionTime(e.target.value)}
+                 type="text"
                  className="border w-full  px-2 py-4 text-lg  focus:border-orange-400 border-black rounded-md placeholder:text-gray-400 outline-none placeholder:italic " />
                  </div>
 
