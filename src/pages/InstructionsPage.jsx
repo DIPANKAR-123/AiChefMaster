@@ -281,7 +281,7 @@ const InstructionsPage = () => {
                   <span className=" px-4 max-w-full flex gap-2">
                     <p>Step</p> <p>{index + 1} </p>  <p> -</p>
                   </span>
-                  <p className="flex max-w-full break-all">{instruction.step} ({instruction.time})</p>
+                  <p className="flex max-w-full break-all">{instruction.step} ({instruction.time} min)</p>
                   <button onClick={() => removeInstruction(index)} className=" mx-2">
                     <IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-rose-200 text-3xl" />
                   </button>
