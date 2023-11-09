@@ -209,7 +209,7 @@ const InstructionsPage = () => {
                       </span>
                       <IoIosClose
                         onClick={() => removeIngredient(ingredient.name)}
-                        className="text-xl cursor-pointer  border  border-black hover:bg-amber-800 rounded-full"
+                        className="text-xl cursor-pointer  border  border-black hover:bg-amber-500 rounded-full"
                       />
                     </li>
                   ))}
