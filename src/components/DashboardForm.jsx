@@ -85,7 +85,7 @@ const navigateToNextPage = () => {
 };
 
   return (
-    <div className="pt-16 w-[90%] lg:w-[60%]">
+    <div className="pt-16 w-[90%] lg:w-[55%]">
     <div className=" py-6 text-center">
       <p className=" text-3xl font-medium ">
         Enter details of a new dish
@@ -106,7 +106,7 @@ const navigateToNextPage = () => {
                   htmlFor=""
                   className=" text-md font-medium pb-2"
                 >
-                  Dish Name
+                  Dish Name <span className="text-rose-600">*</span>
                 </label>
 
                 <input
@@ -121,7 +121,7 @@ const navigateToNextPage = () => {
 
               <div className="flex flex-col pt-4">
                 <label htmlFor="" className=" text-md font-medium pb-2">
-                    Veg or Non-veg
+                    Veg or Non-veg  <span className="text-rose-600">*</span>
                 </label>
                 <select
                     name="veg_non_veg"
@@ -141,7 +141,7 @@ const navigateToNextPage = () => {
                   htmlFor=""
                   className=" text-md font-medium pb-2"
                 >
-                  Dish Description
+                  Dish Description  <span className="text-rose-600">*</span>
                 </label>
 
                 <input
@@ -160,7 +160,7 @@ const navigateToNextPage = () => {
                   htmlFor=""
                   className=" text-md font-medium pb-2"
                 >
-                  Popularity State
+                  Popularity State 
                 </label>
 
                 <input
@@ -178,7 +178,7 @@ const navigateToNextPage = () => {
                   htmlFor=""
                   className=" text-md font-medium pb-2"
                 >
-                  Cuisine
+                  Cuisine  <span className="text-rose-600">*</span>
                 </label>
 
                 <input
@@ -196,10 +196,10 @@ const navigateToNextPage = () => {
 
               
               <div className="flex flex-col pt-4">
-              <label className=" text-md font-medium pb-2">Kitchen Equipments</label>
+              <label className=" text-md font-medium pb-2">Kitchen Equipments  <span className="text-rose-600">*</span></label>
               <input 
-              name="kitchen_equipment" 
-              value={form.kitchen_equipment}
+              name="kitchen_equipments" 
+              value={form.kitchen_equipments}
               onChange={inputHandler}
               placeholder="eg. Oven, Pan, Spatula"
               className="border px-2 py-1 placeholder:italic  text-lg  border-black rounded-md placeholder:text-gray-400 outline-none focus:border-orange-400"
@@ -227,7 +227,7 @@ const navigateToNextPage = () => {
             </ul>
             <div className="flex flex-col">
   <label htmlFor="course_type" className=" text-md font-medium pb-2">
-    Course Type
+    Course Type  <span className="text-rose-600">*</span>
   </label>
 
   <select

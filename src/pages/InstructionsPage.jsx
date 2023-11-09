@@ -50,9 +50,9 @@ const InstructionsPage = () => {
   const [ingredientQuantity, setIngredientQuantity] = useState(0);
   const [ingredientUnit, setIngredientUnit] = useState("gram");
   const [newInstruction, setNewInstruction] = useState("");
-  const [instructionTime, setInstructionTime] = useState("");
+  const [instructionTime, setInstructionTime] = useState(0);
   const [isLoading, setisLoading] = useState(false)
-
+  
   const btnHandler = () => {
     setOpen((prev) => !prev);
   };
@@ -139,7 +139,7 @@ const InstructionsPage = () => {
       }));
       setIngredientName("");
       setIngredientQuantity("");
-      setIngredientUnit("");
+      setIngredientUnit(0);
     }
   };
 
@@ -170,7 +170,19 @@ const InstructionsPage = () => {
     navigate("/dashboard", { state: { inputData: formData } });
   };
 
-
+  useEffect(() => {
+    let totalTime = 0;
+    formData.instructions.forEach((instruction) => {
+      // Assuming instruction.time is in minutes, you can adjust accordingly
+      totalTime += parseInt(instruction.time) ;
+    });
+  
+    // Update formData with the calculated totalTime
+    setFormData((prevData) => ({
+      ...prevData,
+      cooking_time: totalTime, // Adjust if needed
+    }));
+  }, [formData.instructions]);
 
 
 
@@ -204,7 +216,7 @@ const InstructionsPage = () => {
                 </ul>
                 <div className="flex flex-col lg:flex-row gap-0 lg:gap-4">
                   <div className="w-full lg:w-1/2 pt-4">
-                    <label className=" block text-black">Name</label>
+                    <label className=" block text-black">Name <span className="text-rose-600">*</span></label>
                     <input
                       type="text"
                       name="ingredient_name"
@@ -216,7 +228,7 @@ const InstructionsPage = () => {
                   </div>
 
                   <div className="w-full lg:w-1/2 pt-4">
-                    <label className=" block">Quantity</label>
+                    <label className=" block">Quantity <span className="text-rose-600">*</span></label>
                     <input
                       type="number"
                       name="ingredient_quantity"
@@ -227,7 +239,7 @@ const InstructionsPage = () => {
                     />
                   </div>
                   <div className="w-full lg:w-1/2 pt-4">
-                    <label className=" block">Unit</label>
+                    <label className=" block">Unit  <span className="text-rose-600">*</span></label>
                     <select
                       
                       name="ingredient_unit"
@@ -236,7 +248,7 @@ const InstructionsPage = () => {
                       
                       className="px-2 my-2 py-1 text-black text-lg w-full border border-zinc-700  rounded-md focus:border-orange-400 placeholder:italic outline-none"
                     >
-                      <option value="">Select Course Type</option>
+                      <option value="">Select Course Type </option>
                       <option value="gram">gram</option>
                       <option value="mL">mL</option>
                       <option value="teaspoon">teaspoon</option>
@@ -283,7 +295,7 @@ const InstructionsPage = () => {
                 
                 <div className="flex flex-col lg:flex-row gap-4 pt-2  items-center">
                 <div className="w-full">
-                <label className=" font-medium text-md">Enter a new Step</label>
+                <label className=" font-medium text-md">Enter a new Step  <span className="text-rose-600">*</span></label>
                 <textarea
                   type="text"
                   name="new_instruction"
@@ -294,12 +306,14 @@ const InstructionsPage = () => {
                 />
                 </div>
                 <div className="flex flex-col">
-                <label className="text-black font-medium text-md">Enter Time </label>
+                <label className="text-black font-medium text-md">Enter Time <span className="text-rose-600">*</span> </label>
                 <input
                 value={instructionTime}
                 onChange={(e)=>setInstructionTime(e.target.value)}
-                 type="text"
+                 type="number"
+                 placeholder="eg. 20"
                  className="border w-full  px-2 py-4 text-lg  focus:border-orange-400 border-black rounded-md placeholder:text-gray-400 outline-none placeholder:italic " />
+                 <p>min</p>
                  </div>
 
                 <button onClick={addInstruction} type="button" className=" ">
