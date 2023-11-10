@@ -92,7 +92,7 @@ const History = () => {
       </select>
       <div className='  flex w-screen justify-center '>
       <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center rounded-xl  p-2 lg:p-6 '>
-        {dishes.length > 0 ? dishes.map((dish, index) => {
+        {dishes.length > 0 && isLoading==false ? dishes.map((dish, index) => {
           // Parse the date string to a JavaScript Date object
           const createdDate = new Date(dish.created_at);
 
@@ -121,10 +121,15 @@ const History = () => {
           }
           return null; // Hide dishes that don't match the filter
         }):(
-          
-            <div className='flex flex-col w-screen  justify-center items-center'><CircularProgress color="inherit"  /></div>
+
+            <div className={`${isLoading ? 'flex' : 'hidden'} min-w-screen  justify-center items-center`}><CircularProgress color="inherit"  /></div>
           
         )}
+        
+      
+
+        
+        
          
          <div className={'popup-media transition-all  w-full max-auto justify-center ' } style={{display: open?'flex':'none'}}>
             <span onClick={(prev)=>setOpen(!prev)} className='absolute cursor-pointer right-0 p-8'><IoIosClose className="text-rose-600 border border-rose-600 rounded-full hover:bg-rose-200 text-3xl" /></span>
