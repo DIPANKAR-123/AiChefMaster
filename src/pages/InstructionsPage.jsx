@@ -252,6 +252,8 @@ const InstructionsPage = () => {
                       <option value="gram">gram</option>
                       <option value="mL">mL</option>
                       <option value="teaspoon">teaspoon</option>
+                      <option value="tablespoon">tablespoon</option>
+                      <option value="whole">whole</option>
                     </select>
                   </div>
                 </div>

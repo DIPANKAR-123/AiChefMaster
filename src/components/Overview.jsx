@@ -12,6 +12,7 @@ const Overview = ({form, color}) => {
        <div className='flex items-center gap-4 border-b border-zinc-500'><p className='p-1  py-2 font-semibold lg:text-xl'>Veg or Non-veg - </p><span className='text-lg '>{form.veg_non_veg}</span></div>
        <div className='flex items-center gap-4 border-b border-zinc-500'><p className='p-1 py-2 font-semibold lg:text-xl'>Popularity state - </p><span className=' text-lg'> {form.popularity_state}</span></div>
        <div className='flex items-center gap-4 border-b border-zinc-500'><p className='p-1  py-2 font-semibold lg:text-xl'>Cuisine -  </p> <span className='text-lg '> {form.cuisine}</span></div>
+       <div className='flex items-center gap-4 border-b border-zinc-500'><p className='p-1  py-2 font-semibold lg:text-xl'>Kitchen Equipments -  </p> <span className='text-lg '> {form.kitchen_equipments}</span></div>
        <div className='flex items-center gap-4 border-b border-zinc-500'>
   <p className='p-1  py-2 font-semibold lg:text-xl'>Course Types - </p>
   <div className="flex gap-1">
@@ -40,7 +41,7 @@ const Overview = ({form, color}) => {
         <ul className='flex flex-col gap-1 py-4'>
           {form.instructions.map((instruction, index) => (
             <li className='text-lg break-all flex gap-1' key={index}> <p>{index+1}</p> <p>. </p><p className='
-            px-2'> {instruction.step}</p></li>
+            px-2'> {instruction.step} ({instruction.time} min)</p></li>
           ))}
         </ul>
       </div>
