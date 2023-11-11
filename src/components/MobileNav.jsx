@@ -72,16 +72,16 @@ const MobileNav = () => {
             
           
             {user && (<div className='flex-col flex items-center  md:flex-row'>
-            <span className=' text-base  pb-1  border-r-2 border-hidden md: border-white '>{user.first_name}</span>
+            <span className=' text-base  pb-1  border-r-2 border-hidden md: '>{user.first_name}</span>
           <button onClick={handleClick} className='border text-base my-4 border-amber-500 px-2  rounded-full mx-2 '>Logout</button>
             </div>)}
 
             {!user && (
               <>
-               <li key='login' className=' text-lg text-white font-primary px-4   transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-2 '>
+               <li key='login' className=' text-lg  font-primary px-4   transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-2 '>
                <Link to='/login'>login</Link>
                </li>
-               <li key='signup' className=' text-lg text-white font-primary px-4   transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-2 '>
+               <li key='signup' className=' text-lg font-primary px-4   transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-2 '>
                <Link to='/signup'>signup</Link>
                </li>
                </>
