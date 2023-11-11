@@ -37,32 +37,42 @@ const DashboardForm = () => {
     localStorage.setItem("formData", JSON.stringify(form));
   };
 
- const inputHandlerCourse = (e) =>{
-   const selectedValue = e.target.value;
-  setCourseName(selectedValue === "" ? [] : selectedValue);
+  const inputHandlerCourse = (e) => {
+    const selectedValue = e.target.value;
+  
+    // Assuming you want to create an object with the "name" property
+    const courseObject = { name: selectedValue };
+  
+    // Use the updated value of courseName in the state update
+    setCourseName(selectedValue === "" ? [] : selectedValue);
+  
+    // Use the updated value of courseObject in the state update
+    setCourses((prevCourses) => [...prevCourses, courseObject]);
+  
+    const updatedForm = {
+      ...form,
+      courses: [...form.courses, courseObject],
+    };
+  
+    setForm(updatedForm);
+    saveFormDataToLocalStorage(updatedForm);
+  };
+  
 
-  // Use the updated value of courseName in the state update
-  setCourses((prevCourses) => [...prevCourses, selectedValue]);
-  const updatedForm = {
-    ...form,
-    courses:[...form.courses, selectedValue],
 
-  }
-  setForm(updatedForm)
-  saveFormDataToLocalStorage(updatedForm);
- }
-
-
- const removeCourse = (name) => {
-  const updatedCourses = form.courses.filter(
-    (course) => course!== name
-  );
-  setForm((prevData) => ({
-    ...prevData,
-    courses: updatedCourses,
-  }));
-  console.log('After update:', form.courses);
-};
+  const removeCourse = (name) => {
+    const updatedCourses = form.courses.filter(
+      (course) => course.name !== name
+    );
+  
+    setForm((prevData) => ({
+      ...prevData,
+      courses: updatedCourses,
+    }));
+  
+    console.log('After update:', form.courses);
+  };
+  
 
 
   const inputHandler = (e) => {
@@ -216,7 +226,7 @@ const navigateToNextPage = () => {
                 key={index}
                 className="bg-amber-300 font-medium flex flex-row rounded-md items-center gap-2 px-2 py-1"
               >
-                <span>{course}</span>
+                <span>{course.name}</span>
                 <IoIosClose
                   onClick={() => removeCourse(course)}
                   className="text-xl cursor-pointer  border  border-black hover:bg-amber-500 rounded-full"

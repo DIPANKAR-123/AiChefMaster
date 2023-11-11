@@ -17,7 +17,7 @@ const Overview = ({form, color}) => {
   <p className='p-1  py-2 font-semibold lg:text-xl'>Course Types - </p>
   <div className="flex gap-1">
     {form.courses.map((type, index) => (
-      <span key={index} className='text-lg'>{type},</span>
+      <span key={index} className='text-lg'>{type.name},</span>
     ))}
   </div>
 </div>
