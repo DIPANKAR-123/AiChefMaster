@@ -46,6 +46,9 @@ const Navbar = () => {
             <li key='contact' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-green-600'>
             <NavLink  to='/contact'>Contact</NavLink>
             </li>
+            <li key='contact' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300    py-2 hover:text-green-600'>
+            <NavLink  to='/career'>Career</NavLink>
+            </li>
             
       </ul>
           

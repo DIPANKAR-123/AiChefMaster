@@ -1,40 +1,35 @@
 
-import {BrowserRouter, Routes, Route,Navigate} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import DashboardPage from './pages/DashboardPage'
 import SignupPage from './pages/SignupPage'
 import LoginPage from './pages/LoginPage'
 import ContactPage from './pages/ContactPage'
+import CareerPage from './pages/CareerPage'
 import './App.css'
 import Navbar from './components/Navbar'
-import InstructionsPage from './pages/InstructionsPage'
-import HistoryPage from "./pages/HistoryPage"
-import SearchPage from "./pages/SearchPage"
-
 import { useAuthContext } from './hooks/useAuthContext'
+
 function App() {
   const {user} = useAuthContext()
-  
-
 
   return (
     <div>
     <BrowserRouter>
       <Navbar/> 
-      <div className='pages '>
+      <div className='pages'>
         <Routes>
           <Route path='/' element={<HomePage/>}/>
-          <Route path='/dashboard' element={!user?<SignupPage/>: <DashboardPage/>}/>
-          <Route path='/dashboard/instruction' element={ <InstructionsPage/>}/>
+          <Route path='/dashboard' element={user?<DashboardPage/>: <Navigate to='/signup'/>}/>
           <Route path='/contact' element={<ContactPage/>}/>
           <Route path='/signup' element={<SignupPage/>}/>
+          <Route path='/career' element={<CareerPage/>}/>
           <Route path='/login' element={!user?<LoginPage/>:< Navigate to='/dashboard'/>}/>
-          <Route path='/history' element={!user?<SignupPage/>: <HistoryPage/>}/>
-          <Route path='/search' element={!user?<SignupPage/>: <SearchPage/>}/>
-          
+          <Route path='/reset' element={!user?<LoginPage/>:< Navigate to='/reset'/>}/>
         </Routes>
       </div>
     </BrowserRouter> 
+   
     </div>
   )
 }

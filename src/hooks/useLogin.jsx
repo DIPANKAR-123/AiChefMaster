@@ -52,6 +52,44 @@ export const useLogin = () =>{
 
             
     }
+    const googleLogin=async ()=>{
+        setIsLoading(true);
+        setError(null)
+        
+     
+        const response = await fetch(`${import.meta.env.VITE_API_URL}auth/social/o/google-oauth2/`,{
+            method: 'POST',
+            headers: {'Content-Type' : 'application/json'},
+            // body: JSON.stringify(data)
+            })
 
-    return {login, error, isLoading }
+            const json = await response.json()
+
+            if(!response.ok)
+            {
+                setIsLoading(false)
+                setError(json.message)
+                
+                
+                console.log(error);
+                console.log(json.message)
+            }
+
+            if(response.ok)
+            {
+                console.log(response)
+                // save user to local storage
+                localStorage.setItem('user', JSON.stringify(json))
+
+                //update AuthContext
+                dispatch({type:'LOGIN', payload: json})
+
+                setIsLoading(false)
+                toast.success("Logged in Successfully")
+               
+            }
+
+    }
+
+    return {login, error, isLoading ,googleLogin}
 }
