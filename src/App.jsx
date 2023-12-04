@@ -9,6 +9,7 @@ import CareerPage from './pages/CareerPage'
 import './App.css'
 import Navbar from './components/Navbar'
 import { useAuthContext } from './hooks/useAuthContext'
+import JobsPage from './pages/JobsPage'
 
 function App() {
   const {user} = useAuthContext()
@@ -24,6 +25,7 @@ function App() {
           <Route path='/contact' element={<ContactPage/>}/>
           <Route path='/signup' element={<SignupPage/>}/>
           <Route path='/career' element={<CareerPage/>}/>
+          <Route path='/jobs' element={!user?<JobsPage/>: <Navigate to='/signup'/>}/>
           <Route path='/login' element={!user?<LoginPage/>:< Navigate to='/dashboard'/>}/>
           <Route path='/reset' element={!user?<LoginPage/>:< Navigate to='/reset'/>}/>
         </Routes>
