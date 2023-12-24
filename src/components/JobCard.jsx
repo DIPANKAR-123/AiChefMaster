@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 function JobCard({id,image,info,type,name,location,duration,stipend}) {
     console.log(id);
   return (
-    <NavLink  to='/'>
+    <NavLink  to='/jobform'>
     <div  className='cardcss gap-1 text-black'>
         <div className='flex items-center justify-around  '>
         <img src={image} width={4}  className='image' alt="" ></img>

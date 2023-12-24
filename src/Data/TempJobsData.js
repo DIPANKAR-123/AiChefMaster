@@ -49,7 +49,9 @@ const TempJobsData = [
 		type: "Intern",
         duration:"6 months ",
         stipend:"10000",
+		
 	},
+	
     
 
 ];

@@ -8,13 +8,13 @@ function CareerPage() {
     <div className="  careerscss  overflow-x-hidden max-w-screen md:flex-row     font-bold   ">
         <div className="flex flex-col  items-center  pb-8 ">
 
-        <h1 className="text-3xl font-semibold title  font-primary mb-2">Welcome To AiChefMaster</h1>
+        <h1 className="text-3xl font-semibold title  font-primary mb-2">Welcome To AIChefMaster</h1>
         <p className="title">We're more than just a workplace, we are family</p>
         </div>
         <div  className="card mt-4">
             <div className=" image mt-1"><div className="shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] "><img width={400} className="rounded-3xl" src={img} alt="img" /></div></div>
             <div className="content">
-                <h2 className="title text-3xl">Life at <span className="bold text-green-500">AiChefMaster</span></h2>
+                <h2 className="title text-3xl">Life at <span className="bold text-green-500">AIChefMaster</span></h2>
                 <p className="desc">  We know that finding a meaningful and rewarding career can be a long journey. Our goal is to make that process easy for you & create a work environment that's enriching-one that you will look forward to every day.</p>
             </div>
         </div>

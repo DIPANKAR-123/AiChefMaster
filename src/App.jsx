@@ -10,6 +10,11 @@ import './App.css'
 import Navbar from './components/Navbar'
 import { useAuthContext } from './hooks/useAuthContext'
 import JobsPage from './pages/JobsPage'
+import JobDataPage from './pages/JobDataPage'
+import JobOpening from './pages/JobOpening'
+import JobForm from './components/JobForm'
+import ApplicationPage from './components/ApplicationPage'
+import page from "../src/resume-parser/page"
 
 function App() {
   const {user} = useAuthContext()
@@ -28,6 +33,10 @@ function App() {
           <Route path='/jobs' element={!user?<JobsPage/>: <Navigate to='/signup'/>}/>
           <Route path='/login' element={!user?<LoginPage/>:< Navigate to='/dashboard'/>}/>
           <Route path='/reset' element={!user?<LoginPage/>:< Navigate to='/reset'/>}/>
+          <Route path='/jobform' element={!user?<JobForm/>:< Navigate to='/signup'/>}/>
+          <Route path='/jobapplication' element={!user?<JobDataPage/>:< Navigate to='/signup'/>}/>
+          <Route path='/jobopenings' element={!user?<ApplicationPage/>:< Navigate to='/signup'/>}/>
+          {/* <Route path='/resume-parser' element={!user?<page/>:< Navigate to='/signup'/>}/> */}
         </Routes>
       </div>
     </BrowserRouter> 
