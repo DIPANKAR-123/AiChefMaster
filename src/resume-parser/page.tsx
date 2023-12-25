@@ -15,7 +15,7 @@ import React from 'react';
 
 const RESUME_EXAMPLES = [
   {
-    fileUrl: "resume-example/laverne-resume.pdf",
+    fileUrl: "",
     description: (
       <span>
         Borrowed from University of La Verne Career Center -{" "}
@@ -53,28 +53,24 @@ export default function ResumeParser() {
   }, [fileUrl]);
 
   return (
-    <main className="h-full w-full overflow-hidden">
-      <div className="grid md:grid-cols-6">
-        <div className="flex justify-center px-2 md:col-span-3 md:h-[calc(100vh-var(--top-nav-bar-height))] md:justify-end">
+    <main className=" mt-16 h-full w-full overflow-hidden">
+      <div className="grid ">
+        {/* <div className="flex justify-center px-2 md:col-span-3 md:h-[calc(100vh-var(--top-nav-bar-height))] md:justify-end">
           <section className="mt-5 grow px-4 md:max-w-[600px] md:px-0">
             <div className="aspect-h-[9.5] aspect-w-7">
               <iframe src={`${fileUrl}#navpanes=0`} className="h-full w-full" />
             </div>
           </section>
           <FlexboxSpacer maxWidth={45} className="hidden md:block" />
-        </div>
+        </div> */}
         <div className="flex px-6 text-gray-900 md:col-span-3 md:h-[calc(100vh-var(--top-nav-bar-height))] md:overflow-y-scroll">
           <FlexboxSpacer maxWidth={45} className="hidden md:block" />
-          <section className="max-w-[600px] grow">
+          <section className="mx-auto max-w-[900px] grow">
             <Heading className="text-primary !mt-4">
-              Resume Parser Playground
+             Enter Your Resume
             </Heading>
-            <Paragraph smallMarginTop={true}>
-              This playground showcases the OpenResume resume parser and its
-              ability to parse information from a resume PDF. Click around the
-              PDF examples below to observe different parsing results.
-            </Paragraph>
-            <div className="mt-3 flex gap-3">
+            
+            {/* <div className="mt-3 flex gap-3">
               {RESUME_EXAMPLES.map((example, idx) => (
                 <article
                   key={idx}
@@ -97,8 +93,8 @@ export default function ResumeParser() {
                   </p>
                 </article>
               ))}
-            </div>
-            <Paragraph>
+            </div> */}
+            {/* <Paragraph>
               You can also{" "}
               <span className="font-semibold">add your resume below</span> to
               access how well your resume would be parsed by similar Application
@@ -106,7 +102,7 @@ export default function ResumeParser() {
               information it can parse out, the better it indicates the resume
               is well formatted and easy to read. It is beneficial to have the
               name and email accurately parsed at the very least.
-            </Paragraph>
+            </Paragraph> */}
             <div className="mt-3">
               <ResumeDropzone
                 onFileUrlChange={(fileUrl) =>
@@ -119,11 +115,11 @@ export default function ResumeParser() {
               Resume Parsing Results
             </Heading>
             <ResumeTable resume={resume} />
-            <ResumeParserAlgorithmArticle
+            {/* <ResumeParserAlgorithmArticle
               textItems={textItems}
               lines={lines}
               sections={sections}
-            />
+            /> */}
             <div className="pt-24" />
           </section>
         </div>

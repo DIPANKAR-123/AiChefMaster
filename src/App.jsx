@@ -14,7 +14,7 @@ import JobDataPage from './pages/JobDataPage'
 import JobOpening from './pages/JobOpening'
 import JobForm from './components/JobForm'
 import ApplicationPage from './components/ApplicationPage'
-import page from "../src/resume-parser/page"
+import Page from "../src/resume-parser/page"
 
 function App() {
   const {user} = useAuthContext()
@@ -36,7 +36,7 @@ function App() {
           <Route path='/jobform' element={!user?<JobForm/>:< Navigate to='/signup'/>}/>
           <Route path='/jobapplication' element={!user?<JobDataPage/>:< Navigate to='/signup'/>}/>
           <Route path='/jobopenings' element={!user?<ApplicationPage/>:< Navigate to='/signup'/>}/>
-          {/* <Route path='/resume-parser' element={!user?<page/>:< Navigate to='/signup'/>}/> */}
+          <Route path='/resume-parser' element={!user?<Page/>:< Navigate to='/signup'/>}/>
         </Routes>
       </div>
     </BrowserRouter> 

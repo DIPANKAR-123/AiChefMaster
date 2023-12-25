@@ -7,10 +7,9 @@ import {
   saveStateToLocalStorage,
 } from "../lib/redux/local-storage";
 import { type ShowForm, initialSettings } from "../lib/redux/settingsSlice";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 
 // import addPdfSrc from "../../public/assets/add-pdf.svg";
-import Image from "next/image";
 import { cx } from "../lib/cx";
 import { deepClone } from "../lib/deep-clone";
 import React from "react";
@@ -33,7 +32,7 @@ export const ResumeDropzone = ({
   const [file, setFile] = useState(defaultFileState);
   const [isHoveredOnDropzone, setIsHoveredOnDropzone] = useState(false);
   const [hasNonPdfFile, setHasNonPdfFile] = useState(false);
-  const router = useRouter();
+  const router = useNavigate();
 
   const hasFile = Boolean(file.name);
 
@@ -93,7 +92,7 @@ export const ResumeDropzone = ({
     }
 
     saveStateToLocalStorage({ resume, settings });
-    router.push("/resume-builder");
+    router("/resume-builder");
   };
 
   return (
@@ -118,7 +117,7 @@ export const ResumeDropzone = ({
         )}
       >
         {!playgroundView && (
-          <Image
+          <img
             src=""
             className="mx-auto h-14 w-14"
             alt="Add pdf"
@@ -138,7 +137,7 @@ export const ResumeDropzone = ({
             </p>
             <p className="flex text-sm text-gray-500">
               <LockClosedIcon className="mr-1 mt-1 h-3 w-3 text-gray-400" />
-              File data is used locally and never leaves your browser
+                   Join us at AIChefMaster
             </p>
           </>
         ) : (
@@ -189,8 +188,7 @@ export const ResumeDropzone = ({
                 </button>
               )}
               <p className={cx(" text-gray-500", !playgroundView && "mt-6")}>
-                Note: {!playgroundView ? "Import" : "Parser"} works best on
-                single column resume
+                Note: {!playgroundView ? "Import" : "Enter"}  Single Page Resume for better Results
               </p>
             </>
           )}

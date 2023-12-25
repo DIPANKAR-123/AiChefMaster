@@ -1,13 +1,12 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { useLocation } from "react-router-dom";
 import Link from "next/link";
-import Image from "next/image";
 import logoSrc from "public/logo.svg";
 import { cx } from "lib/cx";
 
 export const TopNavBar = () => {
-  const pathName = usePathname();
-  const isHomePage = pathName === "/";
+  const location = useLocation();
+  const isHomePage = location.pathName === "/";
 
   return (
     <header
@@ -20,7 +19,7 @@ export const TopNavBar = () => {
       <div className="flex h-10 w-full items-center justify-between">
         <Link href="/">
           <span className="sr-only">OpenResume</span>
-          <Image
+          <img
             src={logoSrc}
             alt="OpenResume Logo"
             className="h-8 w-full"
