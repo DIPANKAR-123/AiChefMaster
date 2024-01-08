@@ -32,7 +32,7 @@ const MobileNav = () => {
     
        
   return (
-    <nav className=' md:hidden'>
+    <nav className=' xl:hidden'>
         <div onClick={()=>setOpenMenu(true)} className={'text-black text-3xl cursor-pointer'}>
            <CgMenuRight/>
         </div>
@@ -65,6 +65,9 @@ const MobileNav = () => {
             </li>
             <li key='contact' className=' text-base  pb-1   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
             <NavLink  to='/contact'>Contact</NavLink>
+            </li>
+            <li key='career' className=' text-base  pb-1   transition-all duration-300     hover:text-amber-500' onClick={()=>{setOpenMenu(false)}}>
+            <NavLink  to='/career'>Career</NavLink>
             </li>
 
             

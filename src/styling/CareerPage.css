@@ -21,15 +21,15 @@
     } */ 
 }
 .jobpagecss{
-    margin: 4%;
+    /* margin: 4%; */
     border-radius: 2.1875rem;
     background: #FFFFFF;
-    padding: 4rem;
+    /* padding: 4rem; */
 
     /* display: flex; */
     /* justify-content: center; */
     flex-direction: column;
-    gap: 6rem;
+    /* gap: 6rem; */
     z-index: 10;
 }
 .title{

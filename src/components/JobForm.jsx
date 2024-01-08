@@ -104,8 +104,8 @@ function JobForm(props) {
         <p className='px-5 text-slate-700 my-7 '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet ipsum temporibus reprehenderit beatae laboriosam neque, doloribus in eveniet inventore et sunt blanditiis dolor, sit dignissimos praesentium a. Perspiciatis laudantium magni illum autem corrupti ea a sequi itaque sapiente modi aspernatur repudiandae et distinctio praesentium dolorem, optio eum, porro cum blanditiis excepturi commodi saepe. Sit, ipsam quasi voluptas eaque reiciendis rerum doloremque! Ratione eaque minus quia cum adipisci labore voluptatem iste. Nisi explicabo eius cumque sequi soluta ad, harum quas dolor id similique unde illum quia accusamus omnis architecto, nulla ducimus libero doloribus laborum. Explicabo tempora ut earum eveniet. Perspiciatis, hic?</p>
         </div >
         </div>
-        <ul className='px-5 flex justify-around text-2xl text-blue-600 list-disc'>
-        <a href="/"><li>Veiw all jobs</li></a>
+        <ul className='px-5 mx-[6rem]  flex md:flex-row flex-col justify-around text-2xl text-blue-600 list-disc'>
+        <a href="/"><li>View all jobs</li></a>
         <a href="/"><li>Visit website</li></a>
         <a href="/"><li>News</li></a>
         <a href="/"><li>Articles</li></a>

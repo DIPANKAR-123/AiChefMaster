@@ -23,13 +23,13 @@ const Navbar = () => {
   }
 
   return (
-    <header className='shadow-xl bg-white   text-black border-slate-800  z-[2000] py-4 fixed top-0 left-0 px-4 md:px-8 w-screen  flex items-center justify-between md:justify-around'>
+    <header className='shadow-xl bg-white   text-black border-slate-800  z-[2000] py-4 fixed top-0 left-0 px-4 md:px-8 w-screen  flex items-center justify-between xl:justify-around'>
       <h1 className='text-3xl font-semibold font-primary' >
         {/* <a href='/'><img src="./assets/LOGO-text.png" alt="logo" /></a> */}
         <a href="/">AIChefMaster</a>
       </h1>
 
-      <ul className='hidden md:flex md:items-center h-full '>
+      <ul className='hidden xl:flex xl:items-center h-full '>
             <li key='home' className=' text-base font-medium  font-primary px-4 h-full  transition-all duration-300   py-2 hover:text-green-600'>
             <NavLink  to='/' >Home</NavLink>
             </li>
@@ -52,7 +52,7 @@ const Navbar = () => {
             
       </ul>
           
-           <div className='hidden md:flex md:items-center  h-full'>
+           <div className='hidden xl:flex xl:items-center   h-full'>
             {! user && <div>
             <button className='  '>
             <Link className='text-lg  font-primary px-4 h-full  transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-2 ' to='/login'>Login</Link>
@@ -62,11 +62,11 @@ const Navbar = () => {
             </button>
             </div>}
 
-            {user && <div className='hidden md:flex md:items-center  h-full border-r-2 mx-4'>
+            {user && <div className='hidden xl:flex xl:items-center   h-full border-r-2 mx-4'>
              <button className='text-lg  font-primary px-4 h-full  py-1 '>{user.first_name}</button> 
             </div>}
 
-            {user && <div className='hidden md:flex md:items-center  h-full'>
+            {user && <div className='hidden xl:flex xl:items-center  h-full'>
              <button onClick={handleLogout} className='text-lg  font-primary px-4 h-full  transition-all duration-300 border border-yellow-800 rounded-xl hover:bg-[#ff910032]  py-1 '>Logout</button> 
             </div>}
 

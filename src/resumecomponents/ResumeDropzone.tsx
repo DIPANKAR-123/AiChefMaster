@@ -122,7 +122,7 @@ export const ResumeDropzone = ({
             className="mx-auto h-14 w-14"
             alt="Add pdf"
             aria-hidden="true"
-            priority
+            
           />
         )}
         {!hasFile ? (

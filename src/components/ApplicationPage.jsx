@@ -119,16 +119,21 @@ function ApplicationPage() {
         />
       </label>
     </form>
-    <form className='mx-44'>
-      <label>Mobile<span style={{ color: 'red', fontSize:'2 rem'}}>*</span>:
-        <input className='border rounded border-black my-2  px-7 py-2 block'
+    
+    <form className='mx-44 '>
+    <p className='w-72 h-24 oveflow-y-hidden overflow-y-scroll '>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est tempora aperiam amet dignissimos iste. Nihil enim consectetur magnam labore atque?</p>
+    <div className=''>
+
+      <label className=''>Mobile<span style={{ color: 'red', fontSize:'2 rem'}}>*</span>:
+        <input className='border overflow-y-auto rounded border-black my-2  px-7 py-2 block'
           type="text " 
           value={mobile}
           placeholder=' Enter Your mobile'
           required
           onChange={(e) => setMobile(e.target.value)}
-        />
+          />
       </label>
+          </div>
     </form>
     <form className='mx-44 border'>
       <label>Where did you hear about this job?<span style={{ color: 'red', fontSize:'1.5rem'}}>*</span> :
