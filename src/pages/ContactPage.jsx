@@ -2,20 +2,21 @@ import React, { useState, useEffect } from 'react'
 import {BiLogoLinkedinSquare} from 'react-icons/bi'
 import Button_1 from '../components/Button_1'
 import {  toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 const ContactPage = () => {
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [message, setMessage] = useState('')
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-
+  const navigate=useNavigate();
   
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
-  
+    navigate("/career");
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}api/contact/`, {
         method: 'POST',

@@ -26,7 +26,7 @@ function App() {
       <div className='pages'>
         <Routes>
           <Route path='/' element={<HomePage/>}/>
-          <Route path='/dashboard' element={user?<DashboardPage/>: <Navigate to='/signup'/>}/>
+          <Route path='/dashboard' element={!user?<DashboardPage/>: <Navigate to='/signup'/>}/>
           <Route path='/contact' element={<ContactPage/>}/>
           <Route path='/signup' element={<SignupPage/>}/>
           <Route path='/career' element={<CareerPage/>}/>
